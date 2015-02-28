@@ -40,7 +40,7 @@ public class Terminal extends JPanel {
   private void doDrawing(Graphics g) {
     Font gameFont = Font.getFont("Arial");
     try {
-        FileInputStream fontInput = new FileInputStream("src/Minecraftia-Regular.ttf");
+        FileInputStream fontInput = new FileInputStream("src/Nintendo.ttf");
         gameFont = Font.createFont(Font.TRUETYPE_FONT, fontInput);
         gameFont = gameFont.deriveFont(20f);
     } catch (FileNotFoundException ex) {

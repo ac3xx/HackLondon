@@ -38,7 +38,7 @@ public class GamePanel extends JPanel {
           }
         }
 
-//        repaint();
+        super.repaint();
     }
 
   public void turnOnTheLight() {
@@ -49,7 +49,7 @@ public class GamePanel extends JPanel {
       }
     }
 
-    repaint();
+    super.repaint();
   }
 
     private void setup(Graphics2D g2d) {
