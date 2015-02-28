@@ -30,6 +30,8 @@ public class Terminal extends JPanel {
     codeLines.add("Terminal Panel");
     codeLines.add("------------");
     this.setFocusTraversalKeysEnabled(false);
+    currentLine = 0;
+    currentChar = 0;
     }
 
   private void doDrawing(Graphics g) {
@@ -60,19 +62,26 @@ public class Terminal extends JPanel {
   }
 
   private void drawString(Graphics g, String text, int x, int y) {
-      for (String line : text.split("\n"))
-          g.drawString(line, x, y += g.getFontMetrics().getHeight());
+    g.setColor(Color.WHITE);
+    for (String line : text.split("\n"))
+      g.drawString(line, x, y += g.getFontMetrics().getHeight());
   }
 
   private void drawCursor(Graphics g) {
     StringBuilder sb = new StringBuilder();
+//    for (int i = 0; i < currentLine; i++) {
+//      sb.append("\n");
+//    }
+//    for (int i = 0; i < currentChar; i++) {
+//      sb.append("  ");
+//    }
     for (int i = 0; i < currentLine; i++) {
-      sb.append(" ");
-    }
-    for (int i = 0; i < currentChar; i++) {
       sb.append("\n");
     }
+    String thisLine = codeLines.get(currentLine);
+    sb.append(thisLine.substring(0, currentChar));
     sb.append("|");
+    g.setColor(Color.BLUE);
     drawString(g, sb.toString(), 25, 25);
   }
 
@@ -87,21 +96,52 @@ public class Terminal extends JPanel {
   }
 
   public void keyPressed(KeyEvent e) {
+    System.out.println("currentLine = " + currentLine + " currentChar = " + currentChar);
+    String thisLine = codeLines.get(currentLine);
+    String newLine;
     System.out.println("Key Code: " + e.getKeyCode());
     switch (e.getKeyCode()) {
-      case KeyEvent.VK_ENTER: currentLine++; currentChar = 0; break;
-      case KeyEvent.VK_KP_LEFT: System.out.println("kpleft");
-      case KeyEvent.VK_LEFT: currentChar = Math.max(currentChar - 1, 0);break;
-      case KeyEvent.VK_RIGHT: currentChar++; break;
-      case KeyEvent.VK_UP: currentLine = Math.max(currentLine-1, 0); break;
-      case KeyEvent.VK_DOWN: currentLine = Math.min(currentLine+1, codeLines.size()-1); break;
+      case KeyEvent.VK_LEFT:
+        currentChar = Math.max(currentChar - 1, 0); break;
+      case KeyEvent.VK_RIGHT:
+        currentChar++; break;
+      case KeyEvent.VK_UP:
+        currentLine = Math.max(currentLine-1, 0); currentChar = Math.max(currentChar, codeLines.get(currentLine).length()); break;
+      case KeyEvent.VK_DOWN:
+        currentLine = Math.min(currentLine+1, codeLines.size()-1); break;
       case KeyEvent.VK_BACK_SPACE:
         if (currentChar == 0) {
+          if (currentLine != 0) {
+            String previousLine = codeLines.get(currentLine-1);
+            currentLine--;
+            newLine = previousLine + thisLine;
+            codeLines.set(currentLine, newLine);
+            codeLines.removeLast();
+            for (int i = Math.min(currentLine+1, codeLines.size()-1); i < codeLines.size(); i++) {
+              codeLines.set(i, codeLines.get(i + 1)); //shifts all the lower lines up
+            }
+          }
+          currentChar = codeLines.get(currentLine+1).length();
           currentLine = Math.max(currentLine-1, 0);
-          currentChar = codeLines.get(currentLine).length();
         } else {
+          //System.out.println("currentChar = " + currentChar + " thisLine Max = " + Math.max(thisLine.length()-1, 0));
+          newLine = thisLine.substring(0, currentChar-1) + thisLine.substring(currentChar, Math.max(thisLine.length(), 0));
+          codeLines.set(currentLine, newLine);
           currentChar--;
-        } break;
+        }
+        break;
+      case KeyEvent.VK_ENTER:
+        String nextLine = thisLine.substring(currentChar, Math.max(thisLine.length(), 0));
+        newLine = thisLine.substring(0, currentChar);
+        codeLines.set(currentLine, newLine);
+        currentLine++;
+        if (currentLine == codeLines.size()) {
+          codeLines.add(nextLine);
+        }else {
+          codeLines.set(currentLine, nextLine);
+        }
+        currentChar = 0;
+        break;
     }
 
 
