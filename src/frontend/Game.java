@@ -1,5 +1,7 @@
 package frontend;
 
+import backend.GameEngine;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -13,13 +15,11 @@ import java.util.Scanner;
  * Created by James on 28/02/15.
  */
 public class Game extends JFrame implements KeyListener, ActionListener {
-    private Scanner scanner;
-    private String input = "";
-    private boolean hasRead = false;
     private Terminal gameTerminal;
     private LinkedList<String> codeLines = new LinkedList<String>();
     private int currentLine = 0;
     private GamePanel game;
+    private GameEngine gameEngine;
 
     public Game() {
         start();
@@ -34,8 +34,10 @@ public class Game extends JFrame implements KeyListener, ActionListener {
 
         gameTerminal = new Terminal();
         game = new GamePanel();
+        GamePanel gamePanel = new GamePanel();
+        gameEngine = new GameEngine(gameTerminal, gamePanel);
         add(gameTerminal);
-        add(game);
+        add(gamePanel);
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
@@ -51,8 +53,6 @@ public class Game extends JFrame implements KeyListener, ActionListener {
         // Disable focus traversal so tab is detected
         this.setFocusTraversalKeysEnabled(false);
 
-        scanner = new Scanner(input);
-
         Timer timer = new Timer(1000/60, this);
         timer.start();
 
@@ -65,16 +65,8 @@ public class Game extends JFrame implements KeyListener, ActionListener {
 
     private void tick() {
         // Tick, runs the game
-//        if (hasRead) {
-            System.out.println("Input command: " + input);
-//            gameTerminal.title += "\n";
-//            gameTerminal.title += input;
-//            input = "";
-        gameTerminal.title = String.join("\n", codeLines);
-            hasRead = false;
-
-
-            gameTerminal.repaint();
+//        gameTerminal.title = String.join("\n", gameEngine.getCodeLines());
+        gameTerminal.repaint();
 //        }
     }
 
@@ -89,7 +81,7 @@ public class Game extends JFrame implements KeyListener, ActionListener {
             return;
         }
         if (e.getKeyCode() == KeyEvent.VK_ENTER) {
-            hasRead = true;
+//            hasRead = true;
             currentLine++;
         } else if (e.getKeyCode() == KeyEvent.VK_BACK_SPACE) {
             String curLine = codeLines.get(currentLine);
@@ -135,6 +127,7 @@ public class Game extends JFrame implements KeyListener, ActionListener {
             game.repaint();
 
         }
+        gameTerminal.keyPressed(e);
     }
 
     @Override
