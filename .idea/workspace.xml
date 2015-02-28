@@ -2,13 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1d2c28c7-75bb-4ee1-a862-abad9aebba86" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/HackLondon/backend/GameEngine.class" afterPath="$PROJECT_DIR$/out/production/HackLondon/backend/GameEngine.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/HackLondon/backend/Var.class" afterPath="$PROJECT_DIR$/out/production/HackLondon/backend/Var.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/HackLondon/frontend/Game.class" afterPath="$PROJECT_DIR$/out/production/HackLondon/frontend/Game.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/HackLondon/frontend/Terminal.class" afterPath="$PROJECT_DIR$/out/production/HackLondon/frontend/Terminal.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/frontend/Game.java" afterPath="$PROJECT_DIR$/src/frontend/Game.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/backend/GlobalObject.java" afterPath="$PROJECT_DIR$/src/backend/GlobalObject.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/backend/Scope.java" afterPath="$PROJECT_DIR$/src/backend/Scope.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/backend/StatementExecutor.java" afterPath="$PROJECT_DIR$/src/backend/StatementExecutor.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/backend/Var.java" afterPath="$PROJECT_DIR$/src/backend/Var.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/frontend/Terminal.java" afterPath="$PROJECT_DIR$/src/frontend/Terminal.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="HackLondon.iws" />
@@ -45,11 +42,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Game.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Game.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/frontend/Game.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.83455884" vertical-offset="1421" max-vertical-offset="2085">
-              <caret line="129" column="13" selection-start-line="129" selection-start-column="13" selection-end-line="129" selection-end-column="13" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="1541" max-vertical-offset="2085">
+              <caret line="129" column="7" selection-start-line="129" selection-start-column="7" selection-end-line="129" selection-end-column="7" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -93,11 +90,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Terminal.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Terminal.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/frontend/Terminal.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="960" max-vertical-offset="3075">
-              <caret line="104" column="4" selection-start-line="104" selection-start-column="4" selection-end-line="104" selection-end-column="4" />
+            <state vertical-scroll-proportion="0.3584559" vertical-offset="1335" max-vertical-offset="3075">
+              <caret line="113" column="32" selection-start-line="113" selection-start-column="32" selection-end-line="113" selection-end-column="32" />
               <folding />
             </state>
           </provider>
@@ -162,7 +159,6 @@
         <option value="$PROJECT_DIR$/src/frontend/TerminalListener.java" />
         <option value="$PROJECT_DIR$/src/backend/GamePanelListener.java" />
         <option value="$PROJECT_DIR$/src/frontend/GamePanelListener.java" />
-        <option value="$PROJECT_DIR$/src/frontend/Terminal.java" />
         <option value="$PROJECT_DIR$/src/backend/Type.java" />
         <option value="$PROJECT_DIR$/src/backend/VarListener.java" />
         <option value="$PROJECT_DIR$/src/backend/BoolVar.java" />
@@ -179,6 +175,7 @@
         <option value="$PROJECT_DIR$/src/backend/GlobalObject.java" />
         <option value="$PROJECT_DIR$/src/backend/StatementExecutor.java" />
         <option value="$PROJECT_DIR$/src/frontend/Game.java" />
+        <option value="$PROJECT_DIR$/src/frontend/Terminal.java" />
       </list>
     </option>
   </component>
@@ -508,7 +505,7 @@
       <workItem from="1425136158424" duration="6410000" />
       <workItem from="1425142977291" duration="457000" />
       <workItem from="1425143519783" duration="5194000" />
-      <workItem from="1425150442017" duration="77000" />
+      <workItem from="1425150442017" duration="309000" />
     </task>
     <task id="LOCAL-00001" summary="Set up listeners">
       <created>1425134039565</created>
@@ -534,11 +531,17 @@
       <option name="project" value="LOCAL" />
       <updated>1425148362364</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Fixed terminal">
+      <created>1425150533423</created>
+      <option name="number" value="00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1425150533423</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="14470000" />
+    <option name="totallyTimeSpent" value="14702000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -590,7 +593,8 @@
     <MESSAGE value="Refactoring" />
     <MESSAGE value="Merged" />
     <MESSAGE value="Statements now execute" />
-    <option name="LAST_COMMIT_MESSAGE" value="Statements now execute" />
+    <MESSAGE value="Fixed terminal" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed terminal" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1003,21 +1007,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/frontend/Terminal.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="960" max-vertical-offset="3075">
-          <caret line="104" column="4" selection-start-line="104" selection-start-column="4" selection-end-line="104" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/frontend/Game.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.83455884" vertical-offset="1421" max-vertical-offset="2085">
-          <caret line="129" column="13" selection-start-line="129" selection-start-column="13" selection-end-line="129" selection-end-column="13" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="1541" max-vertical-offset="2085">
+          <caret line="129" column="7" selection-start-line="129" selection-start-column="7" selection-end-line="129" selection-end-column="7" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/frontend/Terminal.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3584559" vertical-offset="1335" max-vertical-offset="3075">
+          <caret line="113" column="32" selection-start-line="113" selection-start-column="32" selection-end-line="113" selection-end-column="32" />
+          <folding />
         </state>
       </provider>
     </entry>

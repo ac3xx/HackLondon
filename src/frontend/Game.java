@@ -127,7 +127,7 @@ public class Game extends JFrame implements KeyListener, ActionListener {
 
         }
         gameTerminal.keyPressed(e);
-      tick();
+        tick();
     }
 
     @Override

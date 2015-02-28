@@ -120,9 +120,9 @@ public class Terminal extends JPanel {
             for (int i = Math.min(currentLine+1, codeLines.size()-1); i < codeLines.size(); i++) {
               codeLines.set(i, codeLines.get(i + 1)); //shifts all the lower lines up
             }
+            currentChar = codeLines.get(currentLine+1).length();
+            currentLine = Math.max(currentLine-1, 0);
           }
-          currentChar = codeLines.get(currentLine+1).length();
-          currentLine = Math.max(currentLine-1, 0);
         } else {
           //System.out.println("currentChar = " + currentChar + " thisLine Max = " + Math.max(thisLine.length()-1, 0));
           newLine = thisLine.substring(0, currentChar-1) + thisLine.substring(currentChar, Math.max(thisLine.length(), 0));
