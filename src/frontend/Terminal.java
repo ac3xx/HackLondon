@@ -29,8 +29,9 @@ public class Terminal extends JPanel {
     codeLines = new LinkedList<String>();
     codeLines.add("Terminal Panel");
     codeLines.add("------------");
+    codeLines.add("");
     this.setFocusTraversalKeysEnabled(false);
-    currentLine = 0;
+    currentLine = 2;
     currentChar = 0;
     }
 
@@ -79,9 +80,9 @@ public class Terminal extends JPanel {
       sb.append("\n");
     }
     String thisLine = codeLines.get(currentLine);
-    sb.append(thisLine.substring(0, currentChar));
+    sb.append(thisLine.substring(0, Math.min(currentChar, codeLines.get(currentLine).length())));
     sb.append("|");
-    g.setColor(Color.BLUE);
+    g.setColor(Color.WHITE);
     drawString(g, sb.toString(), 25, 25);
   }
 
@@ -100,15 +101,30 @@ public class Terminal extends JPanel {
     String thisLine = codeLines.get(currentLine);
     String newLine;
     System.out.println("Key Code: " + e.getKeyCode());
+    char c = e.getKeyChar();
     switch (e.getKeyCode()) {
       case KeyEvent.VK_LEFT:
-        currentChar = Math.max(currentChar - 1, 0); break;
+        if (currentChar == 0) {
+          currentLine = Math.max(currentLine-1, 0);
+          currentChar = codeLines.get(currentLine).length();
+        } else {
+          currentChar--;
+        }
+        break;
       case KeyEvent.VK_RIGHT:
-        currentChar++; break;
+        if (currentChar == codeLines.get(currentLine).length()) {
+          if (currentLine < codeLines.size()-1) {
+            currentLine++;
+            currentChar = 0;
+          }
+        } else {
+          currentChar++;
+        }
+        break;
       case KeyEvent.VK_UP:
         currentLine = Math.max(currentLine-1, 0); currentChar = Math.max(currentChar, codeLines.get(currentLine).length()); break;
       case KeyEvent.VK_DOWN:
-        currentLine = Math.min(currentLine+1, codeLines.size()-1); break;
+        currentLine = Math.min(currentLine+1, codeLines.size()-1); currentChar = Math.min(codeLines.get(currentLine).length(), currentChar); break;
       case KeyEvent.VK_BACK_SPACE:
         if (currentChar == 0) {
           if (currentLine != 0) {
@@ -130,16 +146,19 @@ public class Terminal extends JPanel {
       case KeyEvent.VK_ENTER:
         String nextLine = thisLine.substring(currentChar, Math.max(thisLine.length(), 0));
         newLine = thisLine.substring(0, currentChar);
-//        codeLines.set(currentLine, newLine);
-        codeLines.add(currentLine+1, newLine);
+        codeLines.set(currentLine, newLine);
         currentLine++;
-        if (currentLine == codeLines.size()) {
-          codeLines.add(nextLine);
-        }else {
-          codeLines.set(currentLine, nextLine);
-        }
+        codeLines.add(currentLine, nextLine);
         currentChar = 0;
-
+        break;
+      case KeyEvent.VK_SHIFT: break; // TODO: make this better
+      default:
+        //TODO: Check if line should overflow
+//        if (Character.isAlph())
+        newLine = thisLine.substring(0, currentChar) + c
+                + thisLine.substring(Math.min(currentChar, thisLine.length()), thisLine.length());
+        codeLines.set(currentLine, newLine);
+        currentChar++;
         break;
     }
 
