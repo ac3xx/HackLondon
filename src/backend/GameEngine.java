@@ -55,10 +55,10 @@ public class GameEngine implements TerminalListener, GamePanelListener {
     List<String> codeList = terminal.getCodeLines();
     String changedLine = codeList.get(lineNumber);
     try {
+      System.out.println(changedLine);
       world.execute(changedLine);
     } catch (StatementException e) {
 //      e.printStackTrace();
-      System.out.println("Invalid change");
     }
 //    System.out.println("new line: " + changedLine);
   }
