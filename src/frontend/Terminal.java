@@ -141,6 +141,7 @@ public class Terminal extends JPanel {
           codeLines.set(currentLine, nextLine);
         }
         currentChar = 0;
+
         break;
     }
 
