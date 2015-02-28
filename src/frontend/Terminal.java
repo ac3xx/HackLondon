@@ -11,6 +11,8 @@ import java.io.InputStream;
  * Created by James on 28/02/15.
  */
 public class Terminal extends JPanel {
+    public String title = "Terminal Panel\n------------\n";
+
     public Terminal() {
         setOpaque(true);
         setBackground(Color.BLACK);
@@ -21,6 +23,7 @@ public class Terminal extends JPanel {
         try {
             FileInputStream fontInput = new FileInputStream("src/Minecraftia-Regular.ttf");
             gameFont = Font.createFont(Font.TRUETYPE_FONT, fontInput);
+            gameFont = gameFont.deriveFont(20f);
         } catch (FileNotFoundException ex) {
             ex.printStackTrace();
         } catch (FontFormatException e) {
@@ -33,12 +36,16 @@ public class Terminal extends JPanel {
         Graphics2D g2d = (Graphics2D) g;
         g2d.setColor(Color.WHITE);
         g2d.setFont(gameFont);
-        g2d.drawString("Terminal Panel", 50, 50);
+        drawString(g, title, 25, 25);
+    }
+
+    private void drawString(Graphics g, String text, int x, int y) {
+        for (String line : text.split("\n"))
+            g.drawString(line, x, y += g.getFontMetrics().getHeight());
     }
 
     @Override
     public void paintComponent(Graphics g) {
-
         super.paintComponent(g);
         doDrawing(g);
     }
