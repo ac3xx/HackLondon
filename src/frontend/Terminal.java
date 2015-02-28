@@ -1,5 +1,7 @@
 package frontend;
 
+import backend.GameEngine;
+
 import javax.swing.*;
 import java.awt.*;
 import java.io.FileInputStream;
@@ -12,8 +14,9 @@ import java.io.InputStream;
  */
 public class Terminal extends JPanel {
     public String title = "Terminal Panel\n------------\n";
+  private TerminalListener listener;
 
-    public Terminal() {
+  public Terminal() {
         setOpaque(true);
         setBackground(Color.BLACK);
     }
@@ -49,4 +52,8 @@ public class Terminal extends JPanel {
         super.paintComponent(g);
         doDrawing(g);
     }
+
+  public void setListener(TerminalListener listener) {
+    this.listener = listener;
+  }
 }

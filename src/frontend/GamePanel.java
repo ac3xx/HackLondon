@@ -1,5 +1,7 @@
 package frontend;
 
+import backend.GameEngine;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -7,7 +9,9 @@ import java.awt.*;
  * Created by James on 28/02/15.
  */
 public class GamePanel extends JPanel {
-    public GamePanel() {
+  private GamePanelListener listener;
+
+  public GamePanel() {
         setOpaque(true);
         setBackground(Color.WHITE);
     }
@@ -25,4 +29,8 @@ public class GamePanel extends JPanel {
         super.paintComponent(g);
         doDrawing(g);
     }
+
+  public void setListener(GamePanelListener listener) {
+    this.listener = listener;
+  }
 }
