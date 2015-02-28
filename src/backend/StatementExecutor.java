@@ -15,22 +15,28 @@ public class StatementExecutor {
         types.put("float", FloatVar.class);
     }
 
-    public StatementExecutor(Scope scope, String stmt) {
+    public StatementExecutor(Scope scope) {
       this.scope = scope;
     }
 
     public void execute(String stmt) {
-      //int asd = 4;
       Scanner scanner = new Scanner(stmt);
       String next = scanner.next();
       if (types.containsKey(next)) {
+          //new variable assignment
           Class c = types.get(next);
         try {
           Var var = (Var) c.newInstance();
           String name = scanner.next();
-          scope.addVariable(name, var);
           String equals = scanner.next();
-          var.setValue(scanner.next());
+          String value = scanner.next();
+          if(var.setValue(value)) {
+            if(!scope.addVariable(name, var)) {
+                System.out.println(name + " is already in the scope");
+            }
+          } else {
+            System.out.println(name + " does not accept value: " + value);
+          }
         } catch (InstantiationException e) {
           e.printStackTrace();
         } catch (IllegalAccessException e) {

@@ -56,7 +56,7 @@ public class Game extends JFrame implements KeyListener, ActionListener {
         Timer timer = new Timer(1000/60, this);
         timer.start();
 
-        System.out.println(Tile.GRASS.getTransitionWith(Tile.WATER, TileTransition.TOP_LEFT_CORNER));
+//        System.out.println(Tile.GRASS.getTransitionWith(Tile.WATER, TileTransition.TOP_LEFT_CORNER));
     }
 
     public void actionPerformed(ActionEvent e) {
@@ -126,7 +126,7 @@ public class Game extends JFrame implements KeyListener, ActionListener {
             game.repaint();
 
         }
-        gameTerminal.keyPressed(e);
+//        gameTerminal.keyPressed(e);
       tick();
     }
 
