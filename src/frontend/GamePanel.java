@@ -38,19 +38,19 @@ public class GamePanel extends JPanel {
           }
         }
 
-        super.repaint();
+        repaint();
     }
 
-  public void turnOnTheLight() {
-    String fileName = Tile.values()[1].getFileName();
-    for (int i = 0; i < 20; i++) {
-      for (int j = 0; j < 20; j++) {
-        setTile(new TileLocation(i, j), "rock");
+    public void turnOnTheLight() {
+      String fileName = Tile.values()[1].getFileName();
+      for (int i = 0; i < 20; i++) {
+        for (int j = 0; j < 20; j++) {
+          setTile(new TileLocation(i, j), "rock");
+        }
       }
-    }
 
-    super.repaint();
-  }
+      repaint();
+    }
 
     private void setup(Graphics2D g2d) {
         // Temporary init
