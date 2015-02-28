@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1d2c28c7-75bb-4ee1-a862-abad9aebba86" name="Default" comment="Terminal does more shit">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/HackLondon/frontend/Terminal.class" afterPath="$PROJECT_DIR$/out/production/HackLondon/frontend/Terminal.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/frontend/GamePanel.java" afterPath="$PROJECT_DIR$/src/frontend/GamePanel.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/frontend/Terminal.java" afterPath="$PROJECT_DIR$/src/frontend/Terminal.java" />
+    <list default="true" id="1d2c28c7-75bb-4ee1-a862-abad9aebba86" name="Default" comment="changed font">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Nintendo.ttf" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/HackLondon/frontend/GamePanel.class" afterPath="$PROJECT_DIR$/out/production/HackLondon/frontend/GamePanel.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="HackLondon.iws" />
@@ -43,8 +42,8 @@
       <file leaf-file-name="GamePanel.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/frontend/GamePanel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.81595093" vertical-offset="681" max-vertical-offset="2025">
-              <caret line="72" column="46" selection-start-line="72" selection-start-column="46" selection-end-line="72" selection-end-column="46" />
+            <state vertical-scroll-proportion="0.5705522" vertical-offset="681" max-vertical-offset="2025">
+              <caret line="64" column="3" selection-start-line="64" selection-start-column="3" selection-end-line="64" selection-end-column="3" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -522,7 +521,13 @@
       <option name="project" value="LOCAL" />
       <updated>1425157938580</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="changed font">
+      <created>1425165213819</created>
+      <option name="number" value="00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1425165213819</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -572,7 +577,8 @@
     </option>
     <MESSAGE value="Terminal cursor up and down and merged" />
     <MESSAGE value="Terminal does more shit" />
-    <option name="LAST_COMMIT_MESSAGE" value="Terminal does more shit" />
+    <MESSAGE value="changed font" />
+    <option name="LAST_COMMIT_MESSAGE" value="changed font" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -976,8 +982,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/frontend/GamePanel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.81595093" vertical-offset="681" max-vertical-offset="2025">
-          <caret line="72" column="46" selection-start-line="72" selection-start-column="46" selection-end-line="72" selection-end-column="46" />
+        <state vertical-scroll-proportion="0.5705522" vertical-offset="681" max-vertical-offset="2025">
+          <caret line="64" column="3" selection-start-line="64" selection-start-column="3" selection-end-line="64" selection-end-column="3" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
