@@ -5,7 +5,7 @@ import java.util.LinkedList;
 /**
  * @author Csongor Kiss
  */
-public class GameObject {
+public class GameObject extends Scope {
   private LinkedList<String> codeLines = new LinkedList<String>();
 
   public LinkedList<String> getCodeLines() {
