@@ -126,7 +126,7 @@ public class Game extends JFrame implements KeyListener, ActionListener {
             game.repaint();
 
         }
-//        gameTerminal.keyPressed(e);
+        gameTerminal.keyPressed(e);
       tick();
     }
 

@@ -6,6 +6,7 @@ import java.util.Set;
 public abstract class Var<T> {
     protected T value;
     private Set<VarListener> listeners = new HashSet<VarListener>();
+    protected String name;
 
   /**
    *
@@ -36,4 +37,12 @@ public abstract class Var<T> {
     public String getStringValue() {
       return value.toString();
     }
+
+    public String getName() {
+      return name;
+    }
+
+  public void setName(String name) {
+    this.name = name;
+  }
 }

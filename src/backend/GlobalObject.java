@@ -10,9 +10,9 @@ public class GlobalObject extends GameObject {
   public GlobalObject() {
     super(null);
     StatementExecutor executor = new StatementExecutor(this);
-    for (Map.Entry<String, Var> entry : variables.entrySet())  {
-      System.out.println(entry.getKey() + " = " + entry.getValue().getStringValue());
-    }
+    executor.execute("int asd = 4");
+    executor.execute("asd = true");
+    executor.execute("james = true");
   }
 
 }
