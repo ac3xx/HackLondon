@@ -115,12 +115,12 @@ public class Terminal extends JPanel {
             String previousLine = codeLines.get(currentLine-1);
             currentLine--;
             newLine = previousLine + thisLine;
+            currentChar = codeLines.get(currentLine).length();
             codeLines.set(currentLine, newLine);
             codeLines.removeLast();
             for (int i = Math.min(currentLine+1, codeLines.size()-1); i < codeLines.size(); i++) {
               codeLines.set(i, codeLines.get(i + 1)); //shifts all the lower lines up
             }
-            currentChar = codeLines.get(currentLine+1).length();
             currentLine = Math.max(currentLine-1, 0);
           }
         } else {

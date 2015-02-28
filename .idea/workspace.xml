@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1d2c28c7-75bb-4ee1-a862-abad9aebba86" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/HackLondon/frontend/Game.class" afterPath="$PROJECT_DIR$/out/production/HackLondon/frontend/Game.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/HackLondon/frontend/Terminal.class" afterPath="$PROJECT_DIR$/out/production/HackLondon/frontend/Terminal.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/frontend/Game.java" afterPath="$PROJECT_DIR$/src/frontend/Game.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/frontend/Terminal.java" afterPath="$PROJECT_DIR$/src/frontend/Terminal.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -93,8 +91,8 @@
       <file leaf-file-name="Terminal.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/frontend/Terminal.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.3584559" vertical-offset="1335" max-vertical-offset="3075">
-              <caret line="113" column="32" selection-start-line="113" selection-start-column="32" selection-end-line="113" selection-end-column="32" />
+            <state vertical-scroll-proportion="0.88235295" vertical-offset="1335" max-vertical-offset="3075">
+              <caret line="132" column="26" selection-start-line="132" selection-start-column="26" selection-end-line="132" selection-end-column="26" />
               <folding />
             </state>
           </provider>
@@ -505,7 +503,7 @@
       <workItem from="1425136158424" duration="6410000" />
       <workItem from="1425142977291" duration="457000" />
       <workItem from="1425143519783" duration="5194000" />
-      <workItem from="1425150442017" duration="309000" />
+      <workItem from="1425150442017" duration="636000" />
     </task>
     <task id="LOCAL-00001" summary="Set up listeners">
       <created>1425134039565</created>
@@ -537,11 +535,17 @@
       <option name="project" value="LOCAL" />
       <updated>1425150533423</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Fixed deletion bug when cursor is at (0,0)">
+      <created>1425151093017</created>
+      <option name="number" value="00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1425151093017</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="14702000" />
+    <option name="totallyTimeSpent" value="15029000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -594,7 +598,8 @@
     <MESSAGE value="Merged" />
     <MESSAGE value="Statements now execute" />
     <MESSAGE value="Fixed terminal" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed terminal" />
+    <MESSAGE value="Fixed deletion bug when cursor is at (0,0)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed deletion bug when cursor is at (0,0)" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -813,13 +818,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_20.jdk/Contents/Home/src.zip!/java/util/LinkedList.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.13157895" vertical-offset="0" max-vertical-offset="18105">
-          <caret line="30" column="49" selection-start-line="30" selection-start-column="49" selection-end-line="30" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/frontend/TerminalListener.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="210">
@@ -1017,10 +1015,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_20.jdk/Contents/Home/src.zip!/java/util/LinkedList.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33272058" vertical-offset="6899" max-vertical-offset="18105">
+          <caret line="505" column="16" selection-start-line="505" selection-start-column="16" selection-end-line="505" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/frontend/Terminal.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3584559" vertical-offset="1335" max-vertical-offset="3075">
-          <caret line="113" column="32" selection-start-line="113" selection-start-column="32" selection-end-line="113" selection-end-column="32" />
+        <state vertical-scroll-proportion="0.88235295" vertical-offset="1335" max-vertical-offset="3075">
+          <caret line="132" column="26" selection-start-line="132" selection-start-column="26" selection-end-line="132" selection-end-column="26" />
           <folding />
         </state>
       </provider>
