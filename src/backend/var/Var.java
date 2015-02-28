@@ -1,4 +1,6 @@
-package backend;
+package backend.var;
+
+import backend.exceptions.StatementException;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -11,10 +13,8 @@ public abstract class Var<T> {
   /**
    *
    * @param newValue
-   * @return true if the assignment was successful
-   *         false if newValue is malformed
    */
-    public abstract boolean setValue(String newValue);
+    public abstract void setValue(String newValue) throws StatementException;
 
     public void setListener(VarListener listener) {
       listeners.add(listener);
@@ -24,9 +24,9 @@ public abstract class Var<T> {
         listeners.remove(listener);
     }
 
-    protected void notifyValueChanged() {
+    protected void notifyValueSet() {
         for (VarListener listener : listeners) {
-            listener.valueChanged(this);
+            listener.valueSet(this);
         }
     }
 

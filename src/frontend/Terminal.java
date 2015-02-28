@@ -11,25 +11,27 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.lang.reflect.Array;
 import java.util.LinkedList;
 
 /**
  * Created by James on 28/02/15.
  */
 public class Terminal extends JPanel {
-  public String title = "Terminal Panel\n------------\n";
   private TerminalListener listener;
   private LinkedList<String> codeLines;
   private int currentLine;
   private int currentChar;
+  private String code;
 
   public Terminal() {
     setOpaque(true);
     setBackground(Color.BLACK);
     codeLines = new LinkedList<String>();
-    codeLines.add("Terminal Panel");
-    codeLines.add("------------");
+    codeLines.add("//Terminal Panel");
+    codeLines.add("//------------");
     codeLines.add("");
+    codeLines.add("boolean light = false;");
     this.setFocusTraversalKeysEnabled(false);
     currentLine = 2;
     currentChar = 0;
@@ -55,7 +57,7 @@ public class Terminal extends JPanel {
     g2d.setFont(gameFont);
     StringBuilder sb = new StringBuilder();
     for (String s: codeLines) {
-      sb.append(s + "\n");
+      sb.append(s).append("\n");
     }
     drawString(g, sb.toString(), 25, 25);
     drawCursor(g);
@@ -97,10 +99,10 @@ public class Terminal extends JPanel {
   }
 
   public void keyPressed(KeyEvent e) {
-    System.out.println("currentLine = " + currentLine + " currentChar = " + currentChar);
+//    System.out.println("currentLine = " + currentLine + " currentChar = " + currentChar);
     String thisLine = codeLines.get(currentLine);
     String newLine;
-    System.out.println("Key Code: " + e.getKeyCode());
+//    System.out.println("Key Code: " + e.getKeyCode());
     char c = e.getKeyChar();
     switch (e.getKeyCode()) {
       case KeyEvent.VK_LEFT:
@@ -122,9 +124,11 @@ public class Terminal extends JPanel {
         }
         break;
       case KeyEvent.VK_UP:
-        currentLine = Math.max(currentLine-1, 0); currentChar = Math.max(currentChar, codeLines.get(currentLine).length()); break;
+        currentLine = Math.max(currentLine-1, 0); currentChar = Math.max(currentChar, codeLines.get(currentLine).length());
+        break;
       case KeyEvent.VK_DOWN:
-        currentLine = Math.min(currentLine+1, codeLines.size()-1); currentChar = Math.min(codeLines.get(currentLine).length(), currentChar); break;
+        currentLine = Math.min(currentLine+1, codeLines.size()-1); currentChar = Math.min(codeLines.get(currentLine).length(), currentChar);
+        break;
       case KeyEvent.VK_BACK_SPACE:
         if (currentChar == 0) {
           if (currentLine != 0) {
@@ -142,6 +146,7 @@ public class Terminal extends JPanel {
           codeLines.set(currentLine, newLine);
           currentChar--;
         }
+        listener.updatedLine(currentLine);
         break;
       case KeyEvent.VK_ENTER:
         String nextLine = thisLine.substring(currentChar, Math.max(thisLine.length(), 0));
@@ -151,7 +156,8 @@ public class Terminal extends JPanel {
         codeLines.add(currentLine, nextLine);
         currentChar = 0;
         break;
-      case KeyEvent.VK_SHIFT: break; // TODO: make this better
+      case KeyEvent.VK_SHIFT:
+        break; // TODO: make this better
       default:
         //TODO: Check if line should overflow
 //        if (Character.isAlph())
@@ -159,6 +165,7 @@ public class Terminal extends JPanel {
                 + thisLine.substring(Math.min(currentChar, thisLine.length()), thisLine.length());
         codeLines.set(currentLine, newLine);
         currentChar++;
+        listener.updatedLine(currentLine);
         break;
     }
 
@@ -180,6 +187,15 @@ public class Terminal extends JPanel {
 
     }
 
+  public LinkedList<String> getCodeLines() {
+    return codeLines;
+  }
+
+  public void setCode(LinkedList<String> newCode) {
+      this.codeLines = newCode;
+      currentLine = 0;
+      currentChar = 0;
+  }
 
 
 //    if (e.getKeyCode() == KeyEvent.VK_ENTER) {

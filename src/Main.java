@@ -1,4 +1,4 @@
-import frontend.Game;
+import frontend.GameWindow;
 import javax.swing.SwingUtilities;
 
 /**
@@ -11,7 +11,7 @@ public class Main {
             @Override
             public void run() {
 
-                Game sk = new Game();
+                GameWindow sk = GameWindow.init();
                 sk.setVisible(true);
             }
         });

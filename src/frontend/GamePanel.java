@@ -30,11 +30,33 @@ public class GamePanel extends JPanel {
 
     }
 
+    public void turnOffTheLight() {
+        String fileName = Tile.values()[0].getFileName();
+        for (int i = 0; i < 20; i++) {
+          for (int j = 0; j < 20; j++) {
+            setTile(new TileLocation(i, j), "grass");
+          }
+        }
+
+//        repaint();
+    }
+
+  public void turnOnTheLight() {
+    String fileName = Tile.values()[1].getFileName();
+    for (int i = 0; i < 20; i++) {
+      for (int j = 0; j < 20; j++) {
+        setTile(new TileLocation(i, j), "rock");
+      }
+    }
+
+    repaint();
+  }
+
     private void setup(Graphics2D g2d) {
         // Temporary init
         BufferedImage grass = null;
         try {
-            grass = ImageIO.read(new File("res/grass.png"));
+            grass = ImageIO.read(new File("res/rock.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -50,7 +72,7 @@ public class GamePanel extends JPanel {
         for (int i = 0; i < wTiles; i++) {
             for (int j = 0; j < hTiles; j++) {
                 TileLocation loc = new TileLocation(i, j);
-                tiles.put(loc, "grass");
+                tiles.put(loc, "rock");
             }
         }
     }

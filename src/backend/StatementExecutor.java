@@ -1,5 +1,13 @@
 package backend;
 
+import backend.exceptions.StatementException;
+import backend.exceptions.VariableAlreadyInScopeException;
+import backend.exceptions.VariableTypeMismatchException;
+import backend.var.BoolVar;
+import backend.var.FloatVar;
+import backend.var.IntVar;
+import backend.var.Var;
+
 import java.util.*;
 
 /**
@@ -18,7 +26,7 @@ public class StatementExecutor {
       this.scope = scope;
     }
 
-    public void execute(String stmt) {
+    public void execute(String stmt) throws StatementException {
       Scanner scanner = new Scanner(stmt);
       String first = scanner.next();
       if (types.containsKey(first)) {
@@ -30,15 +38,8 @@ public class StatementExecutor {
           var.setName(name);
           String equals = scanner.next();
           String value = scanner.next();
-          if(var.setValue(value)) {
-            if(!scope.addVariable(name, var)) {
-                System.out.println(name + " is already in the scope");
-            } else {
-                System.out.println(var.getName() + " now has the value: " + value);
-            }
-          } else {
-            System.out.println(name + " does not accept value: " + value);
-          }
+          var.setValue(value);
+          scope.addVariable(name, var);
         } catch (InstantiationException e) {
           e.printStackTrace();
         } catch (IllegalAccessException e) {
@@ -48,13 +49,7 @@ public class StatementExecutor {
           Var var = scope.getVariableFromScope(first);
           String equals = scanner.next();
           String value = scanner.next();
-          if (!var.setValue(value)) {
-            System.out.println(var.getName() + " does not accept value: " + value);
-          } else {
-            System.out.println(var.getName() + " now has the value: " + value);
-          }
-      } else {
-          System.out.println(first + " is not in the scope");
+          var.setValue(value);
       }
     }
 }

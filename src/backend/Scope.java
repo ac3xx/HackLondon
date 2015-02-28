@@ -1,5 +1,10 @@
 package backend;
 
+import backend.exceptions.StatementException;
+import backend.exceptions.VariableAlreadyInScopeException;
+import backend.exceptions.VariableNotInScopeException;
+import backend.var.Var;
+
 import java.util.HashMap;
 
 /**
@@ -8,6 +13,7 @@ import java.util.HashMap;
 public class Scope {
     private Scope parent;
     protected HashMap<String, Var> variables = new HashMap<String, Var>();
+    protected HashMap<String, Method> methods = new HashMap<String, Method>();
 
     public Scope(Scope parent) {
       //TODO: it can be null
@@ -18,26 +24,22 @@ public class Scope {
    *
    * @param name
    * @param var
-   * @return true, if the variable is added
-   *         false, if the variable is already in the scope
    */
-  public boolean addVariable(String name, Var var) {
+  public void addVariable(String name, Var var) throws StatementException{
       if (containsVariable(name)) {
-        return false;
+          throw new VariableAlreadyInScopeException();
       }
       variables.put(name, var);
-      return true;
   }
 
-  public boolean reassignVariable(String name, String value) {
+  public void reassignVariable(String name, String value) throws StatementException{
     if (variables.containsKey(name)) {
-      return variables.get(name).setValue(value);
+      variables.get(name).setValue(value);
     }
     if (parent != null) {
-      return parent.reassignVariable(name, value);
+      parent.reassignVariable(name, value);
     } else {
-      //TODO: throw exception
-      return false;
+      throw new VariableNotInScopeException();
     }
   }
 
@@ -53,5 +55,11 @@ public class Scope {
 
   public boolean containsVariable(String name) {
     return variables.containsKey(name) || parent != null && parent.containsVariable(name);
+  }
+
+  public void execute(String changedLine) throws StatementException {
+      //TODO: this probably shouldn't even exist
+      StatementExecutor executor = new StatementExecutor(this);
+      executor.execute(changedLine);
   }
 }

@@ -14,15 +14,25 @@ import java.util.Scanner;
 /**
  * Created by James on 28/02/15.
  */
-public class Game extends JFrame implements KeyListener, ActionListener {
+public class GameWindow extends JFrame implements KeyListener, ActionListener {
     private Terminal gameTerminal;
     private LinkedList<String> codeLines = new LinkedList<String>();
+    public static GameWindow instance = new GameWindow();
     private int currentLine = 0;
     private GamePanel game;
     private GameEngine gameEngine;
 
-    public Game() {
-        start();
+    private GameWindow() {
+
+    }
+
+    public static GameWindow init() {
+      instance.start();
+      return instance;
+    }
+
+    public static GameWindow getInstance() {
+      return instance;
     }
 
     public void start() {
@@ -39,7 +49,7 @@ public class Game extends JFrame implements KeyListener, ActionListener {
         add(gameTerminal);
         add(gamePanel);
 
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setResizable(false);
 
@@ -115,17 +125,6 @@ public class Game extends JFrame implements KeyListener, ActionListener {
 //            codeLines.set(currentLine, toAdd);
 //        }
 
-        if (Character.isDigit(e.getKeyChar())) {
-            String fileName = Tile.values()[Integer.parseInt(Character.toString(e.getKeyChar()))].getFileName();
-            for (int i = 0; i < 20; i++) {
-                for (int j = 0; j < 20; j++) {
-                    game.setTile(new TileLocation(i, j), fileName);
-                }
-            }
-
-            game.repaint();
-
-        }
         gameTerminal.keyPressed(e);
         tick();
     }
@@ -134,4 +133,8 @@ public class Game extends JFrame implements KeyListener, ActionListener {
     public void keyReleased(KeyEvent e) {
 
     }
+
+  public GamePanel getGamePanel() {
+    return game;
+  }
 }
