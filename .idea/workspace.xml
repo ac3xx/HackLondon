@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1d2c28c7-75bb-4ee1-a862-abad9aebba86" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/HackLondon/frontend/Terminal.class" afterPath="$PROJECT_DIR$/out/production/HackLondon/frontend/Terminal.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/frontend/Terminal.java" afterPath="$PROJECT_DIR$/src/frontend/Terminal.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -91,8 +90,8 @@
       <file leaf-file-name="Terminal.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/frontend/Terminal.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.88235295" vertical-offset="1335" max-vertical-offset="3075">
-              <caret line="132" column="26" selection-start-line="132" selection-start-column="26" selection-end-line="132" selection-end-column="26" />
+            <state vertical-scroll-proportion="0.5514706" vertical-offset="1530" max-vertical-offset="3045">
+              <caret line="133" column="45" selection-start-line="133" selection-start-column="45" selection-end-line="133" selection-end-column="45" />
               <folding />
             </state>
           </provider>
@@ -503,7 +502,7 @@
       <workItem from="1425136158424" duration="6410000" />
       <workItem from="1425142977291" duration="457000" />
       <workItem from="1425143519783" duration="5194000" />
-      <workItem from="1425150442017" duration="636000" />
+      <workItem from="1425150442017" duration="909000" />
     </task>
     <task id="LOCAL-00001" summary="Set up listeners">
       <created>1425134039565</created>
@@ -541,11 +540,17 @@
       <option name="project" value="LOCAL" />
       <updated>1425151093017</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Fixes cursor position on backspace">
+      <created>1425151421409</created>
+      <option name="number" value="00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1425151421409</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="15029000" />
+    <option name="totallyTimeSpent" value="15302000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -599,7 +604,8 @@
     <MESSAGE value="Statements now execute" />
     <MESSAGE value="Fixed terminal" />
     <MESSAGE value="Fixed deletion bug when cursor is at (0,0)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed deletion bug when cursor is at (0,0)" />
+    <MESSAGE value="Fixes cursor position on backspace" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixes cursor position on backspace" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1025,8 +1031,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/frontend/Terminal.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.88235295" vertical-offset="1335" max-vertical-offset="3075">
-          <caret line="132" column="26" selection-start-line="132" selection-start-column="26" selection-end-line="132" selection-end-column="26" />
+        <state vertical-scroll-proportion="0.5514706" vertical-offset="1530" max-vertical-offset="3045">
+          <caret line="133" column="45" selection-start-line="133" selection-start-column="45" selection-end-line="133" selection-end-column="45" />
           <folding />
         </state>
       </provider>
