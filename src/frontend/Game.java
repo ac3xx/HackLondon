@@ -19,6 +19,7 @@ public class Game extends JFrame implements KeyListener, ActionListener {
     private Terminal gameTerminal;
     private LinkedList<String> codeLines = new LinkedList<String>();
     private int currentLine = 0;
+    private GamePanel game;
 
     public Game() {
         start();
@@ -32,7 +33,7 @@ public class Game extends JFrame implements KeyListener, ActionListener {
         setLayout(layout);
 
         gameTerminal = new Terminal();
-        GamePanel game = new GamePanel();
+        game = new GamePanel();
         add(gameTerminal);
         add(game);
 
@@ -54,6 +55,8 @@ public class Game extends JFrame implements KeyListener, ActionListener {
 
         Timer timer = new Timer(1000/60, this);
         timer.start();
+
+        System.out.println(Tile.GRASS.getTransitionWith(Tile.WATER, TileTransition.TOP_LEFT_CORNER));
     }
 
     public void actionPerformed(ActionEvent e) {
@@ -118,6 +121,19 @@ public class Game extends JFrame implements KeyListener, ActionListener {
             }
 
             codeLines.set(currentLine, toAdd);
+        }
+
+
+        if (Character.isDigit(e.getKeyChar())) {
+            String fileName = Tile.values()[Integer.parseInt(Character.toString(e.getKeyChar()))].getFileName();
+            for (int i = 0; i < 20; i++) {
+                for (int j = 0; j < 20; j++) {
+                    game.setTile(new TileLocation(i, j), fileName);
+                }
+            }
+
+            game.repaint();
+
         }
     }
 
