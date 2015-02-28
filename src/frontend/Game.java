@@ -77,44 +77,43 @@ public class Game extends JFrame implements KeyListener, ActionListener {
 
     @Override
     public void keyPressed(KeyEvent e) {
-        if (e.isActionKey() || e.getKeyCode() == KeyEvent.VK_SHIFT) {
-            return;
-        }
-        if (e.getKeyCode() == KeyEvent.VK_ENTER) {
-//            hasRead = true;
-            currentLine++;
-        } else if (e.getKeyCode() == KeyEvent.VK_BACK_SPACE) {
-            String curLine = codeLines.get(currentLine);
-            if (curLine != null) {
-                if (curLine.isEmpty()) {
-                    codeLines.remove(currentLine);
-                    currentLine--;
-                } else {
-                    curLine = curLine.substring(0, curLine.length() - 1);
-                    codeLines.set(currentLine, curLine);
-                }
-            }
-            gameTerminal.title =  gameTerminal.title.substring(0, gameTerminal.title.length() - 1);
-        } else {
-            String toAdd = "";
-            if (!codeLines.isEmpty() || codeLines.toArray().length < (currentLine - 1)) {
-                toAdd = codeLines.get(currentLine);
-                System.out.println("To add " + toAdd);
-            }
-            if (toAdd.equals("")) {
-                toAdd = "";
-                codeLines.add(currentLine, "");
-            }
-
-            if (e.getKeyCode() == KeyEvent.VK_TAB) {
-                toAdd += "    ";
-            } else {
-                toAdd += e.getKeyChar();
-            }
-
-            codeLines.set(currentLine, toAdd);
-        }
-
+//        if (e.isActionKey() || e.getKeyCode() == KeyEvent.VK_SHIFT) {
+//            return;
+//        }
+//        if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+////            hasRead = true;
+//            currentLine++;
+//        } else if (e.getKeyCode() == KeyEvent.VK_BACK_SPACE) {
+//            String curLine = codeLines.get(currentLine);
+//            if (curLine != null) {
+//                if (curLine.isEmpty()) {
+//                    codeLines.remove(currentLine);
+//                    currentLine--;
+//                } else {
+//                    curLine = curLine.substring(0, curLine.length() - 1);
+//                    codeLines.set(currentLine, curLine);
+//                }
+//            }
+//            gameTerminal.title =  gameTerminal.title.substring(0, gameTerminal.title.length() - 1);
+//        } else {
+//            String toAdd = "";
+//            if (!codeLines.isEmpty() || codeLines.toArray().length < (currentLine - 1)) {
+//                toAdd = codeLines.get(currentLine);
+//                System.out.println("To add " + toAdd);
+//            }
+//            if (toAdd.equals("")) {
+//                toAdd = "";
+//                codeLines.add(currentLine, "");
+//            }
+//
+//            if (e.getKeyCode() == KeyEvent.VK_TAB) {
+//                toAdd += "    ";
+//            } else {
+//                toAdd += e.getKeyChar();
+//            }
+//
+//            codeLines.set(currentLine, toAdd);
+//        }
 
         if (Character.isDigit(e.getKeyChar())) {
             String fileName = Tile.values()[Integer.parseInt(Character.toString(e.getKeyChar()))].getFileName();
@@ -128,6 +127,7 @@ public class Game extends JFrame implements KeyListener, ActionListener {
 
         }
         gameTerminal.keyPressed(e);
+      tick();
     }
 
     @Override

@@ -17,6 +17,7 @@ public class GameEngine implements TerminalListener, GamePanelListener {
     this.gamePanel = gamePanel;
     terminal.setListener(this);
     gamePanel.setListener(this);
+    currentGameObject = new GameObject();
   }
 
   @Override
@@ -30,5 +31,14 @@ public class GameEngine implements TerminalListener, GamePanelListener {
 
   public LinkedList<String> getCodeLines() {
     return currentGameObject.getCodeLines();
+  }
+
+  public void setCodelines(LinkedList<String> codeLines) {currentGameObject.setCodelines(codeLines);}
+
+  public boolean isValidLine(String line) {
+
+    // we need some game logic in here to check validity of the line
+
+    return true;
   }
 }

@@ -11,4 +11,6 @@ public class GameObject {
   public LinkedList<String> getCodeLines() {
     return codeLines;
   }
+
+  public void setCodelines(LinkedList<String> codeLines) { this.codeLines = codeLines;}
 }
