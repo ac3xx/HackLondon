@@ -62,16 +62,17 @@ public class Game extends JFrame implements KeyListener, ActionListener {
 
     private void tick() {
         // Tick, runs the game
-        if (hasRead) {
+//        if (hasRead) {
             System.out.println("Input command: " + input);
 //            gameTerminal.title += "\n";
-            gameTerminal.title += input;
-            input = "";
+//            gameTerminal.title += input;
+//            input = "";
+        gameTerminal.title = String.join("\n", codeLines);
             hasRead = false;
 
 
             gameTerminal.repaint();
-        }
+//        }
     }
 
     @Override
@@ -87,20 +88,36 @@ public class Game extends JFrame implements KeyListener, ActionListener {
         if (e.getKeyCode() == KeyEvent.VK_ENTER) {
             hasRead = true;
             currentLine++;
-            input += "\n";
         } else if (e.getKeyCode() == KeyEvent.VK_BACK_SPACE) {
-            gameTerminal.title =  gameTerminal.title.substring(0, gameTerminal.title.length() - 1);
-//            if (input.length() > 0) {
-//                input = input.substring(0, input.length() - 1);
-//            }
-        } else {
-
-            String toAdd = Character.toString(e.getKeyChar());
-            System.out.println(e.getKeyCode());
-            if (e.getKeyCode() == KeyEvent.VK_TAB) {
-                toAdd = "    ";
+            String curLine = codeLines.get(currentLine);
+            if (curLine != null) {
+                if (curLine.isEmpty()) {
+                    codeLines.remove(currentLine);
+                    currentLine--;
+                } else {
+                    curLine = curLine.substring(0, curLine.length() - 1);
+                    codeLines.set(currentLine, curLine);
+                }
             }
-            input += toAdd;
+            gameTerminal.title =  gameTerminal.title.substring(0, gameTerminal.title.length() - 1);
+        } else {
+            String toAdd = "";
+            if (!codeLines.isEmpty() || codeLines.toArray().length < (currentLine - 1)) {
+                toAdd = codeLines.get(currentLine);
+                System.out.println("To add " + toAdd);
+            }
+            if (toAdd.equals("")) {
+                toAdd = "";
+                codeLines.add(currentLine, "");
+            }
+
+            if (e.getKeyCode() == KeyEvent.VK_TAB) {
+                toAdd += "    ";
+            } else {
+                toAdd += e.getKeyChar();
+            }
+
+            codeLines.set(currentLine, toAdd);
         }
     }
 
