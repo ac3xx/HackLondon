@@ -8,9 +8,15 @@ import java.util.LinkedList;
 public class GameObject extends Scope {
   private LinkedList<String> codeLines = new LinkedList<String>();
 
+  public GameObject(Scope scope) {
+    super(scope);
+  }
+
   public LinkedList<String> getCodeLines() {
     return codeLines;
   }
 
-  public void setCodelines(LinkedList<String> codeLines) { this.codeLines = codeLines;}
+  public void setCodelines(LinkedList<String> codeLines) {
+    this.codeLines = codeLines;
+  }
 }

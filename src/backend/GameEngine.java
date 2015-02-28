@@ -11,13 +11,15 @@ public class GameEngine implements TerminalListener, GamePanelListener {
   private Terminal terminal;
   private GamePanel gamePanel;
   private GameObject currentGameObject;
+  private GlobalObject world;
 
   public GameEngine(Terminal terminal, GamePanel gamePanel) {
     this.terminal = terminal;
     this.gamePanel = gamePanel;
     terminal.setListener(this);
     gamePanel.setListener(this);
-    currentGameObject = new GameObject();
+    world = new GlobalObject();
+    currentGameObject = world;
   }
 
   @Override

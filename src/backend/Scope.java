@@ -6,7 +6,13 @@ import java.util.HashMap;
  * @author Csongor Kiss
  */
 public class Scope {
+    private Scope parent;
     protected HashMap<String, Var> variables = new HashMap<String, Var>();
+
+    public Scope(Scope parent) {
+      //TODO: it can be null
+      this.parent = parent;
+    }
 
   /**
    *

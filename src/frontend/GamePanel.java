@@ -42,7 +42,7 @@ public class GamePanel extends JPanel {
         imgWidth = grass.getWidth();
         imgHeight = grass.getHeight();
 
-        System.out.println(grass);
+//        System.out.println(grass);
 
         int wTiles = (int) Math.ceil((g2d.getClipBounds().getWidth() / imgWidth));
         int hTiles = (int) Math.ceil((g2d.getClipBounds().getHeight() / imgHeight));
@@ -63,7 +63,7 @@ public class GamePanel extends JPanel {
         }
 
 
-        System.out.println("00 - " + tiles.get(new TileLocation(1,1)));
+//        System.out.println("00 - " + tiles.get(new TileLocation(1,1)));
 
         int wTiles = (int) Math.ceil((g2d.getClipBounds().getWidth() / imgWidth));
         int hTiles = (int) Math.ceil((g2d.getClipBounds().getHeight() / imgHeight));
@@ -73,12 +73,12 @@ public class GamePanel extends JPanel {
                 String imgFile = tiles.get(new TileLocation(i, j));
                 BufferedImage img = null;
                 if (imageCache.containsKey(imgFile) && imageCache.get(imgFile) != null) {
-                    System.out.println("file " + imgFile + " exists");
+//                    System.out.println("file " + imgFile + " exists");
                     img = imageCache.get(imgFile);
                 } else {
                     try {
                         String imgName = "res/" + imgFile + ".png";
-                        System.out.println(imgName);
+//                        System.out.println(imgName);
                         img = ImageIO.read(new File(imgName));
                     } catch (IOException e) {
                         e.printStackTrace();
