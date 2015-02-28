@@ -6,6 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.LinkedList;
 import java.util.Scanner;
 
 /**
@@ -16,6 +17,8 @@ public class Game extends JFrame implements KeyListener, ActionListener {
     private String input = "";
     private boolean hasRead = false;
     private Terminal gameTerminal;
+    private LinkedList<String> codeLines = new LinkedList<String>();
+    private int currentLine = 0;
 
     public Game() {
         start();
@@ -35,6 +38,7 @@ public class Game extends JFrame implements KeyListener, ActionListener {
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
+        setResizable(false);
 
         GraphicsDevice myDevice = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
         Window myWindow = this;
@@ -43,11 +47,11 @@ public class Game extends JFrame implements KeyListener, ActionListener {
 
         addKeyListener(this);
 
+        // Disable focus traversal so tab is detected
+        this.setFocusTraversalKeysEnabled(false);
+
         scanner = new Scanner(input);
 
-//        scanner.useDelimiter("\n");
-
-//        tick();
         Timer timer = new Timer(1000/60, this);
         timer.start();
     }
@@ -77,12 +81,27 @@ public class Game extends JFrame implements KeyListener, ActionListener {
 
     @Override
     public void keyPressed(KeyEvent e) {
-        hasRead = true;
-        if (e.getKeyCode() == KeyEvent.VK_BACK_SPACE) {
-            gameTerminal.title =  gameTerminal.title.substring(0, gameTerminal.title.length() - 1);
-            input = input.substring(0, input.length() - 1);
+        if (e.isActionKey() || e.getKeyCode() == KeyEvent.VK_SHIFT) {
+            return;
         }
-        input += e.getKeyChar();
+        if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+            hasRead = true;
+            currentLine++;
+            input += "\n";
+        } else if (e.getKeyCode() == KeyEvent.VK_BACK_SPACE) {
+            gameTerminal.title =  gameTerminal.title.substring(0, gameTerminal.title.length() - 1);
+//            if (input.length() > 0) {
+//                input = input.substring(0, input.length() - 1);
+//            }
+        } else {
+
+            String toAdd = Character.toString(e.getKeyChar());
+            System.out.println(e.getKeyCode());
+            if (e.getKeyCode() == KeyEvent.VK_TAB) {
+                toAdd = "    ";
+            }
+            input += toAdd;
+        }
     }
 
     @Override
