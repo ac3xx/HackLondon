@@ -44,10 +44,10 @@ public class GameWindow extends JFrame implements KeyListener, ActionListener {
 
         gameTerminal = new Terminal();
         game = new GamePanel();
-        GamePanel gamePanel = new GamePanel();
-        gameEngine = new GameEngine(gameTerminal, gamePanel);
+        gameEngine = new GameEngine(gameTerminal, game);
+
         add(gameTerminal);
-        add(gamePanel);
+        add(game);
 
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
@@ -76,6 +76,9 @@ public class GameWindow extends JFrame implements KeyListener, ActionListener {
     private void tick() {
         // Tick, runs the game
 //        gameTerminal.title = String.join("\n", gameEngine.getCodeLines());
+        if (game.isInvalidated()) {
+            game.repaint();
+        }
         gameTerminal.repaint();
 //        }
     }

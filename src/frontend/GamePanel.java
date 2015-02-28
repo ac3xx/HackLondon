@@ -22,6 +22,8 @@ public class GamePanel extends JPanel {
     private HashMap<String, BufferedImage> imageCache = new HashMap<String, BufferedImage>();
     private int imgWidth = 0;
     private int imgHeight = 0;
+    private boolean isInvalidated = false;
+    private int wTiles = 0, hTiles = 0;
 
   public GamePanel() {
         setOpaque(true);
@@ -32,25 +34,25 @@ public class GamePanel extends JPanel {
 
     public void turnOffTheLight() {
         String fileName = Tile.values()[0].getFileName();
-        for (int i = 0; i < 20; i++) {
-          for (int j = 0; j < 20; j++) {
+        for (int i = 0; i < wTiles; i++) {
+          for (int j = 0; j < hTiles; j++) {
             setTile(new TileLocation(i, j), "grass");
           }
         }
-
-        repaint();
+        isInvalidated = true;
     }
 
     public void turnOnTheLight() {
-      String fileName = Tile.values()[1].getFileName();
-      for (int i = 0; i < 20; i++) {
-        for (int j = 0; j < 20; j++) {
-          setTile(new TileLocation(i, j), "rock");
+        System.out.println("Turn on the light!");
+        String fileName = Tile.values()[1].getFileName();
+        for (int i = 0; i < wTiles; i++) {
+            for (int j = 0; j < hTiles; j++) {
+                setTile(new TileLocation(i, j), "rock");
+            }
         }
-      }
-
-      repaint();
+        isInvalidated = true;
     }
+
 
     private void setup(Graphics2D g2d) {
         // Temporary init
@@ -66,8 +68,8 @@ public class GamePanel extends JPanel {
 
 //        System.out.println(grass);
 
-        int wTiles = (int) Math.ceil((g2d.getClipBounds().getWidth() / imgWidth));
-        int hTiles = (int) Math.ceil((g2d.getClipBounds().getHeight() / imgHeight));
+        wTiles = (int) Math.ceil((g2d.getClipBounds().getWidth() / imgWidth));
+        hTiles = (int) Math.ceil((g2d.getClipBounds().getHeight() / imgHeight));
 
         for (int i = 0; i < wTiles; i++) {
             for (int j = 0; j < hTiles; j++) {
@@ -113,7 +115,11 @@ public class GamePanel extends JPanel {
             }
         }
 
+        isInvalidated = false;
+    }
 
+    public boolean isInvalidated() {
+        return isInvalidated;
     }
 
     public void setTile(TileLocation loc, String imageName) {
@@ -122,7 +128,6 @@ public class GamePanel extends JPanel {
 
     @Override
     public void paintComponent(Graphics g) {
-
         super.paintComponent(g);
         doDrawing(g);
     }
