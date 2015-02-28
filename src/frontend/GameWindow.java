@@ -75,12 +75,11 @@ public class GameWindow extends JFrame implements KeyListener, ActionListener {
 
     private void tick() {
         // Tick, runs the game
-//        gameTerminal.title = String.join("\n", gameEngine.getCodeLines());
+
         if (game.isInvalidated()) {
             game.repaint();
         }
         gameTerminal.repaint();
-//        }
     }
 
     @Override
