@@ -25,16 +25,16 @@ public class GlobalObject extends GameObject {
     }
     variables.put(name, var);
     if (name.equals("light")) {
-        var.setListener(new VarListener() {
+        var.addListener(new VarListener() {
           @Override
           public void valueSet(Var variable) {
-              if (variable.getStringValue().equals("true")) {
-                  System.out.println("Congrats");
-                  GameWindow.getInstance().getGamePanel().turnOnTheLight();
-              } else {
-                  System.out.println("No congrats");
-                  GameWindow.getInstance().getGamePanel().turnOffTheLight();
-              }
+            if (variable.getStringValue().equals("true")) {
+              System.out.println("Congrats");
+              GameWindow.getInstance().getGamePanel().turnOnTheLight();
+            } else {
+              System.out.println("No congrats");
+              GameWindow.getInstance().getGamePanel().turnOffTheLight();
+            }
           }
         });
     }

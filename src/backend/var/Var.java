@@ -16,8 +16,10 @@ public abstract class Var<T> {
    */
     public abstract void setValue(String newValue) throws StatementException;
 
-    public void setListener(VarListener listener) {
+    public void addListener(VarListener listener) {
       listeners.add(listener);
+      //TODO: think of a better way?
+      listener.valueSet(this);
     }
 
     public void removeListener(VarListener listener) {
@@ -45,4 +47,5 @@ public abstract class Var<T> {
   public void setName(String name) {
     this.name = name;
   }
+
 }
