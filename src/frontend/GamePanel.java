@@ -5,6 +5,9 @@ import backend.GameEngine;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -28,6 +31,40 @@ public class GamePanel extends JPanel {
   public GamePanel() {
         setOpaque(true);
         setBackground(Color.WHITE);
+
+        addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+                int x = e.getX();
+                int y = e.getY();
+                mouseClick(x, y);
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+
+            }
+        });
+    }
+
+    public void mouseClick(int x, int y) {
+        int xElem = (int) Math.floor(((double) x / ((double)imgWidth * (double)wTiles)) * (double)wTiles);
+        int yElem = (int) Math.floor(((double) y / ((double)imgHeight * (double)hTiles)) * (double)hTiles);
 
 
     }
@@ -65,8 +102,6 @@ public class GamePanel extends JPanel {
         imgWidth = grass.getWidth();
         imgHeight = grass.getHeight();
 
-//        System.out.println(grass);
-
         wTiles = (int) Math.ceil((g2d.getClipBounds().getWidth() / imgWidth));
         hTiles = (int) Math.ceil((g2d.getClipBounds().getHeight() / imgHeight));
 
@@ -86,8 +121,6 @@ public class GamePanel extends JPanel {
         }
 
 
-//        System.out.println("00 - " + tiles.get(new TileLocation(1,1)));
-
         int wTiles = (int) Math.ceil((g2d.getClipBounds().getWidth() / imgWidth));
         int hTiles = (int) Math.ceil((g2d.getClipBounds().getHeight() / imgHeight));
 
@@ -96,12 +129,10 @@ public class GamePanel extends JPanel {
                 String imgFile = tiles.get(new TileLocation(i, j));
                 BufferedImage img = null;
                 if (imageCache.containsKey(imgFile) && imageCache.get(imgFile) != null) {
-//                    System.out.println("file " + imgFile + " exists");
                     img = imageCache.get(imgFile);
                 } else {
                     try {
                         String imgName = "res/" + imgFile + ".png";
-//                        System.out.println(imgName);
                         img = ImageIO.read(new File(imgName));
                     } catch (IOException e) {
                         e.printStackTrace();
