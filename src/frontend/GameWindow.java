@@ -139,4 +139,8 @@ public class GameWindow extends JFrame implements KeyListener, ActionListener {
   public GamePanel getGamePanel() {
     return game;
   }
+
+  public Terminal getTerminal() {
+    return gameTerminal;
+  }
 }

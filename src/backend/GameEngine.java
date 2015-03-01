@@ -13,6 +13,7 @@ public class GameEngine implements TerminalListener, GamePanelListener {
   private Terminal terminal;
   private GamePanel gamePanel;
   private GameObject currentGameObject;
+  private TileLocation currentTile;
   private GlobalObject world;
 
   public GameEngine() {
@@ -24,8 +25,14 @@ public class GameEngine implements TerminalListener, GamePanelListener {
   }
 
   @Override
-  public void gameObjectSelected(GameObject object) {
-    currentGameObject = object;
+  public void tileSelected(TileLocation which) {
+    currentTile = which;
+    currentGameObject = tiles.get(which);
+    if (currentGameObject == null) {
+      currentGameObject = new GameObject(world);
+      tiles.put(which, currentGameObject);
+    }
+    terminal.setCode(currentGameObject.getCodeLines());
   }
 
   public void setCurrentGameObject(GameObject currentGameObject) {
@@ -43,7 +50,7 @@ public class GameEngine implements TerminalListener, GamePanelListener {
     List<String> codeList = terminal.getCodeLines();
     String changedLine = codeList.get(lineNumber);
     try {
-      world.execute(changedLine);
+      currentGameObject.execute(changedLine);
     } catch (StatementException e) {
 //      e.printStackTrace();
     }

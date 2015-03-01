@@ -30,6 +30,8 @@ public class GlobalObject extends GameObject {
           public void valueSet(Var variable) {
             if (variable.getStringValue().equals("true")) {
               GameWindow.getInstance().getGamePanel().turnOnTheLight();
+              //TODO: good job text should only show up the first time
+              GameWindow.getInstance().getTerminal().addCodeLine("Good job!");
             } else {
               GameWindow.getInstance().getGamePanel().turnOffTheLight();
             }

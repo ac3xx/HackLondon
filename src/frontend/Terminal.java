@@ -207,6 +207,10 @@ public class Terminal extends JPanel {
       currentChar = 0;
   }
 
+  public void addCodeLine(String s) {
+    codeLines.add(s);
+  }
+
 
 //    if (e.getKeyCode() == KeyEvent.VK_ENTER) {
 //      //hasRead = true;

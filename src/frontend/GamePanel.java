@@ -6,16 +6,12 @@ import backend.GameObject;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
 
 /**
  * Created by James on 28/02/15.
@@ -28,7 +24,7 @@ public class GamePanel extends JPanel {
     private boolean isInvalidated = false;
     private int wTiles = 0, hTiles = 0;
     private boolean light = false;
-    private static final String DEFAULT_TEXTURE = "water";
+    public static final String DEFAULT_TEXTURE = "water";
     private HashMap<TileLocation, GameObject> tiles;
     private boolean setup;
 
@@ -73,11 +69,8 @@ public class GamePanel extends JPanel {
         int xElem = (int) Math.floor(((double) x / ((double)imgWidth * (double)wTiles)) * (double)wTiles);
         int yElem = (int) Math.floor(((double) y / ((double)imgHeight * (double)hTiles)) * (double)hTiles);
 
-        System.out.println(xElem + ", " + yElem);
         TileLocation location = new TileLocation(xElem, yElem);
-        GameObject object = new GameObject(null);
-        object.setTextureName("grass");
-        tiles.put(location, object);
+        engine.tileSelected(location);
         isInvalidated = true;
     }
 
@@ -126,7 +119,6 @@ public class GamePanel extends JPanel {
                 GameObject object = tiles.get(new TileLocation(i, j));
                 String imgFile;
                 if (object != null) {
-                  System.out.println("Not null");
                   imgFile = tiles.get(new TileLocation(i, j)).getTextureName();
                 } else {
                   imgFile = DEFAULT_TEXTURE;
@@ -162,4 +154,8 @@ public class GamePanel extends JPanel {
         super.paintComponent(g);
         doDrawing(g);
     }
+
+  public void setInvalidated(boolean invalidated) {
+    this.isInvalidated = invalidated;
+  }
 }
