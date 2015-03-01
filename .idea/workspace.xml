@@ -2,14 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1ead90c8-c64d-477e-96f6-8dc863e66355" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/backend/ArithmeticEvaluator.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/backend/ConditionEvaluator.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/HackLondon/Main$1.class" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/HackLondon/Main.class" afterPath="$PROJECT_DIR$/out/production/HackLondon/Main.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HackLondon.iml" afterPath="$PROJECT_DIR$/HackLondon.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/backend/control/If.java" afterPath="$PROJECT_DIR$/src/backend/control/If.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Main.java" afterPath="$PROJECT_DIR$/src/Main.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/backend/Scope.java" afterPath="$PROJECT_DIR$/src/backend/Scope.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="HackLondon.iws" />
@@ -100,8 +94,8 @@
       <file leaf-file-name="If.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/backend/control/If.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.13646056" vertical-offset="191" max-vertical-offset="660">
-              <caret line="17" column="67" selection-start-line="17" selection-start-column="67" selection-end-line="17" selection-end-column="67" />
+            <state vertical-scroll-proportion="0.6162047" vertical-offset="191" max-vertical-offset="675">
+              <caret line="32" column="42" selection-start-line="32" selection-start-column="42" selection-end-line="32" selection-end-column="42" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -141,9 +135,9 @@
         <option value="$PROJECT_DIR$/src/backend/GameObject.java" />
         <option value="$PROJECT_DIR$/src/backend/ArithmeticEvaluator.java" />
         <option value="$PROJECT_DIR$/src/backend/ConditionEvaluator.java" />
-        <option value="$PROJECT_DIR$/src/backend/control/If.java" />
         <option value="$PROJECT_DIR$/src/backend/Scope.java" />
         <option value="$PROJECT_DIR$/src/Main.java" />
+        <option value="$PROJECT_DIR$/src/backend/control/If.java" />
       </list>
     </option>
   </component>
@@ -579,7 +573,7 @@
       <updated>1425170360474</updated>
       <workItem from="1425170362689" duration="765000" />
       <workItem from="1425171154021" duration="3339000" />
-      <workItem from="1425174861959" duration="9131000" />
+      <workItem from="1425174861959" duration="9168000" />
     </task>
     <task id="LOCAL-00001" summary="semicolon now needed">
       <created>1425171174727</created>
@@ -611,11 +605,17 @@
       <option name="project" value="LOCAL" />
       <updated>1425181202236</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="if flow">
+      <created>1425186553520</created>
+      <option name="number" value="00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1425186553520</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="13235000" />
+    <option name="totallyTimeSpent" value="13272000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="810" extended-state="0" />
@@ -638,7 +638,7 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32928476" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32928476" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -691,7 +691,8 @@
     <MESSAGE value="click events" />
     <MESSAGE value="fuck all" />
     <MESSAGE value="some indentation shit" />
-    <option name="LAST_COMMIT_MESSAGE" value="some indentation shit" />
+    <MESSAGE value="if flow" />
+    <option name="LAST_COMMIT_MESSAGE" value="if flow" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -989,8 +990,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/backend/control/If.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.13646056" vertical-offset="191" max-vertical-offset="660">
-          <caret line="17" column="67" selection-start-line="17" selection-start-column="67" selection-end-line="17" selection-end-column="67" />
+        <state vertical-scroll-proportion="0.6162047" vertical-offset="191" max-vertical-offset="675">
+          <caret line="32" column="42" selection-start-line="32" selection-start-column="42" selection-end-line="32" selection-end-column="42" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

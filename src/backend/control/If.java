@@ -30,6 +30,7 @@ public class If extends Scope {
                 execute(stmt);
             }
         } else {
+            if (falseBlock == null) return;
             for (String stmt : falseBlock.getStatements()) {
                 execute(stmt);
             }
