@@ -21,6 +21,7 @@ public class GameObject extends Scope {
     public GameObject(Scope scope) {
         super(scope);
         codeLines.add("//New object");
+        codeLines.add("");
     }
 
     public LinkedList<String> getCodeLines() {
@@ -51,23 +52,20 @@ public class GameObject extends Scope {
         final GameObject instance = this;
         variables.put(name, var);
         if (name.equals("isLand")) {
-            var.addListener(new VarListener() {
-                @Override
-                public void valueSet(Var variable) {
-                    if (variable.getStringValue().equals("true")) {
-                        instance.setTextureName("grass");
-                    } else {
-                        instance.setTextureName("water");
-                    }
-                    GameWindow.getInstance().getGamePanel().setInvalidated(true);
+            var.addListener(variable -> {
+                if (variable.getStringValue().equals("true")) {
+                    instance.setTextureName("grass");
+                } else {
+                    instance.setTextureName("water");
                 }
+                GameWindow.getInstance().getGamePanel().setInvalidated(true);
             });
         }
     }
 
     public void reload() {
         Parser parser = new Parser(this);
-        String parseString = StringUtils.join(codeLines, "");
+        String parseString = StringUtils.join(codeLines, "\n");
         parser.parse(parseString);
     }
 }

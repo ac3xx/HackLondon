@@ -5,6 +5,8 @@ import backend.var.Var;
 import backend.var.VarListener;
 import frontend.GameWindow;
 
+import java.util.Scanner;
+
 /**
  * @author Csongor Kiss
  */

@@ -21,9 +21,7 @@ public class Parser {
     }
 
     public void parse(String string) {
-        string = string.replace("\n", "");
-        string = string.replace("\t", "");
-        scanner = new Scanner(string).useDelimiter("(?<=[;}])");
+        scanner = new Scanner(string).useDelimiter("\n(?<=[;}])");
         // everything starts with var, control or "//"
         try {
             String stmt = scanner.next();
@@ -39,7 +37,7 @@ public class Parser {
                         stripBrackets(condition);; // strip the brackets
                         String statements = stmtScan.next();
                         stripBrackets(statements); //strip curly braces
-                        Scanner blockScanner = new Scanner(statements).useDelimiter("(?<=;)");
+                        Scanner blockScanner = new Scanner(statements).useDelimiter("\n(?<=;)");
                         Block trueBlock = new Block();
                         while (blockScanner.hasNext()) {
                             trueBlock.addStatement(blockScanner.next());
@@ -50,7 +48,7 @@ public class Parser {
                             stmtScan = new Scanner(stmt); stmtScan.next(); //drop the else
                             statements = stmtScan.next();
                             stripBrackets(statements); //strip curly braces
-                            blockScanner = new Scanner(statements).useDelimiter("(?<=;)");
+                            blockScanner = new Scanner(statements).useDelimiter("\n(?<=;)");
                             falseBlock = new Block();
                             while (blockScanner.hasNext()) {
                                 falseBlock.addStatement(blockScanner.next());

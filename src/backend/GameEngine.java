@@ -20,9 +20,10 @@ public class GameEngine implements TerminalListener, GamePanelListener {
   public GameEngine() {
     world = new GlobalObject();
     currentGameObject = world;
-    GameObject object = new GameObject(world);
-    object.setTextureName("grass");
-    tiles.put(new TileLocation(2, 2), object);
+    LinkedList<String> part1Code = new LinkedList<String>();
+    part1Code.add("//Let there be light");
+    part1Code.add("boolean light = false;");
+    world.setCodelines(part1Code);
   }
 
   @Override
@@ -66,10 +67,7 @@ public class GameEngine implements TerminalListener, GamePanelListener {
 
   public void setTerminal(Terminal terminal) {
     this.terminal = terminal;
-    LinkedList<String> part1Code = new LinkedList<String>();
-    part1Code.add("//Let there be light");
-    part1Code.add("boolean light = false;");
-    terminal.setCode(part1Code);
+    terminal.setCode(currentGameObject.getCodeLines());
   }
 
   public void setGamePanel(GamePanel gamePanel) {

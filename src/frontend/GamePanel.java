@@ -66,6 +66,7 @@ public class GamePanel extends JPanel {
     }
 
     public void mouseClick(int x, int y) {
+        if (!light) return;
         int xElem = (int) Math.floor(((double) x / ((double)imgWidth * (double)wTiles)) * (double)wTiles);
         int yElem = (int) Math.floor(((double) y / ((double)imgHeight * (double)hTiles)) * (double)hTiles);
 
