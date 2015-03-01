@@ -161,7 +161,7 @@ public class Terminal extends JPanel {
 //            currentLine = Math.max(currentLine-1, 0);
           }
         } else {
-          System.out.println("currentChar = " + currentChar + " thisLine Max = " + Math.max(thisLine.length()-1, 0));
+          //System.out.println("currentChar = " + currentChar + " thisLine Max = " + Math.max(thisLine.length()-1, 0));
           newLine = thisLine.substring(0, currentChar - 1) + thisLine.substring(currentChar, Math.max(thisLine.length(), 0));
           codeLines.set(currentLine, newLine);
           currentChar--;
@@ -176,8 +176,11 @@ public class Terminal extends JPanel {
         codeLines.add(currentLine, nextLine);
         currentChar = 0;
         break;
-      case KeyEvent.VK_SHIFT:
-        break; // TODO: make this better
+      case KeyEvent.VK_TAB:
+        newLine = thisLine.substring(0, currentChar) + "  " + thisLine.substring(currentChar, codeLines.get(currentLine).length()-1);
+        codeLines.set(currentLine, newLine);
+          currentChar += 2;
+        break;
       default:
         //TODO: Check if line should overflow
         if (!e.isControlDown() && !e.isAltDown()) {
