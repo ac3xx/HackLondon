@@ -43,9 +43,9 @@ public class Terminal extends JPanel {
   private void doDrawing(Graphics g) {
     Font gameFont = Font.getFont("Arial");
     try {
-        FileInputStream fontInput = new FileInputStream("src/Nintendo.ttf");
+        FileInputStream fontInput = new FileInputStream("src/LisaTerminalPaperRaw.ttf");
         gameFont = Font.createFont(Font.TRUETYPE_FONT, fontInput);
-        gameFont = gameFont.deriveFont(15f);
+        gameFont = gameFont.deriveFont(17f);
     } catch (FileNotFoundException ex) {
         ex.printStackTrace();
     } catch (FontFormatException e) {
@@ -213,8 +213,8 @@ public class Terminal extends JPanel {
 
   public void setCode(LinkedList<String> newCode) {
       this.codeLines = newCode;
-      currentLine = 0;
-      currentChar = 0;
+      currentLine = newCode.size()-1;
+      currentChar = newCode.get(newCode.size()-1).length();
   }
 
   public void addCodeLine(String s) {
