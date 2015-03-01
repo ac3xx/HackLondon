@@ -132,7 +132,6 @@ public class Parser {
                     if (accumulatingMethod != null) {
                         accumulatingMethod = null;
                     }
-                    accumulatingBlock = null;
                     declarationMode = false;
                 } else {
 //                    System.out.println(nextLine);

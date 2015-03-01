@@ -89,7 +89,4 @@ public class Scope {
         return ret;
     }
 
-    public void removeMethod(String methodName) {
-        methods.remove(methodName);
-    }
 }
