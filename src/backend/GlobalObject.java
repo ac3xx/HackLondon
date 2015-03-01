@@ -29,10 +29,8 @@ public class GlobalObject extends GameObject {
           @Override
           public void valueSet(Var variable) {
             if (variable.getStringValue().equals("true")) {
-              System.out.println("Congrats");
               GameWindow.getInstance().getGamePanel().turnOnTheLight();
             } else {
-              System.out.println("No congrats");
               GameWindow.getInstance().getGamePanel().turnOffTheLight();
             }
           }

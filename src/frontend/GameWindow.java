@@ -42,9 +42,9 @@ public class GameWindow extends JFrame implements KeyListener, ActionListener {
         layout.setHgap(2);
         setLayout(layout);
 
-        gameTerminal = new Terminal();
-        game = new GamePanel();
-        gameEngine = new GameEngine(gameTerminal, game);
+        gameEngine = new GameEngine();
+        gameTerminal = new Terminal(gameEngine);
+        game = new GamePanel(gameEngine);
 
         add(gameTerminal);
         add(game);

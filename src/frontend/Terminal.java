@@ -18,25 +18,22 @@ import java.util.LinkedList;
  * Created by James on 28/02/15.
  */
 public class Terminal extends JPanel {
-  private TerminalListener listener;
+  private GameEngine engine;
   private LinkedList<String> codeLines;
   private int currentLine;
   private int currentChar;
   private String code;
   private int blink;
 
-  public Terminal() {
+  public Terminal(GameEngine engine) {
     setOpaque(true);
     setBackground(Color.BLACK);
-    codeLines = new LinkedList<String>();
-    codeLines.add("//Terminal Panel");
-    codeLines.add("//------------");
-    codeLines.add("");
-    codeLines.add("boolean light = false;");
     this.setFocusTraversalKeysEnabled(false);
     currentLine = 2;
     currentChar = 0;
     blink = 0;
+    engine.setTerminal(this);
+    this.engine = engine;
     }
 
   private void doDrawing(Graphics g) {
@@ -99,10 +96,6 @@ public class Terminal extends JPanel {
       doDrawing(g);
   }
 
-  public void setListener(TerminalListener listener) {
-    this.listener = listener;
-  }
-
   public void keyPressed(KeyEvent e) {
 //    System.out.println("currentLine = " + currentLine + " currentChar = " + currentChar);
     String thisLine = codeLines.get(currentLine);
@@ -160,7 +153,7 @@ public class Terminal extends JPanel {
           codeLines.set(currentLine, newLine);
           currentChar--;
         }
-        listener.updatedLine(currentLine);
+        engine.updatedLine(currentLine);
         break;
       case KeyEvent.VK_ENTER:
         String nextLine = thisLine.substring(currentChar, Math.max(thisLine.length(), 0));
@@ -179,7 +172,7 @@ public class Terminal extends JPanel {
                   + thisLine.substring(Math.min(currentChar, thisLine.length()), thisLine.length());
           codeLines.set(currentLine, newLine);
           currentChar++;
-          listener.updatedLine(currentLine);
+          engine.updatedLine(currentLine);
         }
         break;
     }
