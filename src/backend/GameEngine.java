@@ -48,10 +48,7 @@ public class GameEngine implements TerminalListener, GamePanelListener {
 
   @Override
   public void updatedLine(int lineNumber) {
-      List<String> codeList = terminal.getCodeLines();
-      String parseString = StringUtils.join(codeList, "");
-
-
+      reloadClass();
 
 //    List<String> codeList = terminal.getCodeLines();
 //    String changedLine = codeList.get(lineNumber);
@@ -62,6 +59,10 @@ public class GameEngine implements TerminalListener, GamePanelListener {
 //    }
 ////    System.out.println("new line: " + changedLine);
   }
+
+    public void reloadClass() {
+        currentGameObject.reload();
+    }
 
   public void setTerminal(Terminal terminal) {
     this.terminal = terminal;

@@ -23,11 +23,12 @@ public class Parser {
     public void parse(String string) {
         string = string.replace("\n", "");
         string = string.replace("\t", "");
-        scanner = new Scanner(string).useDelimiter("[};](?=\\\\p{Alpha})");
+        scanner = new Scanner(string).useDelimiter("(?<=[;}])");
         // everything starts with var, control or "//"
         try {
             String stmt = scanner.next();
             char lastChar = stmt.substring(stmt.length() - 1).toCharArray()[0];
+            System.out.println("lastchar: " + lastChar + " stmt: " + stmt);
             if (lastChar == '}') {
                 //it's control flow
                 Scanner stmtScan = new Scanner(stmt);
@@ -38,7 +39,7 @@ public class Parser {
                         stripBrackets(condition);; // strip the brackets
                         String statements = stmtScan.next();
                         stripBrackets(statements); //strip curly braces
-                        Scanner blockScanner = new Scanner(statements).useDelimiter(";(?=\\\\p{Alpha})");
+                        Scanner blockScanner = new Scanner(statements).useDelimiter("(?<=;)");
                         Block trueBlock = new Block();
                         while (blockScanner.hasNext()) {
                             trueBlock.addStatement(blockScanner.next());
@@ -49,7 +50,7 @@ public class Parser {
                             stmtScan = new Scanner(stmt); stmtScan.next(); //drop the else
                             statements = stmtScan.next();
                             stripBrackets(statements); //strip curly braces
-                            blockScanner = new Scanner(statements).useDelimiter(";(?=\\\\p{Alpha})");
+                            blockScanner = new Scanner(statements).useDelimiter("(?<=;)");
                             falseBlock = new Block();
                             while (blockScanner.hasNext()) {
                                 falseBlock.addStatement(blockScanner.next());
@@ -68,6 +69,7 @@ public class Parser {
                 }
             } else if (lastChar == ';') {
                 //it's a var, execute the fucker
+                System.out.println("stmt execute: "+ stmt);
                 statementExecutor.execute(stmt);
             }
         } catch (NoSuchElementException e) {

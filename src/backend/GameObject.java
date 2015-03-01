@@ -3,10 +3,12 @@ package backend;
 import backend.exceptions.StatementException;
 import backend.var.Var;
 import backend.var.VarListener;
+import com.sun.deploy.util.StringUtils;
 import frontend.GamePanel;
 import frontend.GameWindow;
 
 import java.util.LinkedList;
+import java.util.List;
 
 /**
  * @author Csongor Kiss
@@ -61,5 +63,11 @@ public class GameObject extends Scope {
                 }
             });
         }
+    }
+
+    public void reload() {
+        Parser parser = new Parser(this);
+        String parseString = StringUtils.join(codeLines, "");
+        parser.parse(parseString);
     }
 }
