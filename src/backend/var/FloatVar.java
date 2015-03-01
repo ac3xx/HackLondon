@@ -12,6 +12,7 @@ public class FloatVar extends Var<Float> {
 
   @Override
   public void setValue(String newValue) throws StatementException {
+      newValue = newValue.trim();
     try {
       value = Float.parseFloat(newValue);
       notifyValueSet();

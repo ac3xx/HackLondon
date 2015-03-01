@@ -1,5 +1,7 @@
 package backend;
 
+import backend.control.Executable;
+import backend.control.For;
 import backend.control.If;
 import backend.exceptions.StatementException;
 
@@ -23,72 +25,135 @@ public class Parser {
         statementExecutor = new StatementExecutor(scope);
     }
 
-    static String[] splitAndKeep(String input, String regex, int offset) {
-        ArrayList<String> res = new ArrayList<String>();
-        Pattern p = Pattern.compile(regex);
-        Matcher m = p.matcher(input);
-        int pos = 0;
-        while (m.find()) {
-            res.add(input.substring(pos, m.end() - offset));
-            pos = m.end() - offset;
-        }
-        if(pos < input.length()) res.add(input.substring(pos));
-        return res.toArray(new String[res.size()]);
-    }
-
-    static String[] splitAndKeep(String input, String regex) {
-        return splitAndKeep(input, regex, 0);
-    }
+//    static String[] splitAndKeep(String input, String regex, int offset) {
+//        ArrayList<String> res = new ArrayList<String>();
+//        Pattern p = Pattern.compile(regex);
+//        Matcher m = p.matcher(input);
+//        int pos = 0;
+//        while (m.find()) {
+//            res.add(input.substring(pos, m.end() - offset));
+//            pos = m.end() - offset;
+//        }
+//        if(pos < input.length()) res.add(input.substring(pos));
+//        return res.toArray(new String[res.size()]);
+//    }
+//
+//    static String[] splitAndKeep(String input, String regex) {
+//        return splitAndKeep(input, regex, 0);
+//    }
 
     public void parse(String string) {
-        //System.out.println("parse: " + string);
-        scanner = new Scanner(string).useDelimiter("[ \n]");
-
-        while (scanner.hasNext()) {
+        Executable accumulatingExecutable = null;
+        boolean declarationMode = false;
+        Block accumulatingBlock = null;
+        scanner = new Scanner(string);
+        while (scanner.hasNextLine()) {
             try {
-                String instr = scanner.next();
-                switch (instr) {
-                    case "boolean":
-                    case "int":
-                    case "float":
-                        String name = scanner.next();
-                        String equals = scanner.next();
-                        String value = scanner.next();
-                        statementExecutor.execute(instr + name + value);
-                        break;
-                    case "if":
-                        String condition = scanner.next();
-                        String trueString = scanner.next();
-                        while (!scanner.hasNext(".+}")) {
-                            String toAdd = scanner.next();
-                            System.out.println("trueString: " + trueString+ " toAdd: "+ toAdd);
-                            trueString = trueString + " " +toAdd;
-                        }
-                        stripBrackets(trueString);
-                        String falseString = null;
-                        if (scanner.hasNext("else")) {
-                            falseString = scanner.next();
-                            while (!scanner.hasNext(".+}")) {
-                                falseString = falseString + scanner.next();
+                String nextLine = scanner.nextLine().trim();
+                if (nextLine.startsWith("//") || nextLine.startsWith("/*") || nextLine.startsWith("*")) continue;
+                if (nextLine.endsWith(";")) {
+                    if (!declarationMode) {
+                        statementExecutor.execute(nextLine);
+                    } else {
+//                        System.out.println(nextLine);
+                        accumulatingBlock.addStatement(nextLine);
+                    }
+                } else if (nextLine.endsWith("{")) {
+                    String firstWord = nextLine.substring(0, nextLine.indexOf(" "));
+                    nextLine = nextLine.substring(nextLine.indexOf(" ") + 1, nextLine.length());
+                    System.out.println(nextLine);
+                    switch (firstWord.trim()) {
+                        case "for": {
+                            Pattern pattern = Pattern.compile("\\((int .+ = [0-9]*;) (i < [0-9]+); (.+)\\) \\{");
+                            Matcher matcher = pattern.matcher(nextLine);
+                            //for (int i = 0; i < 10; i++) {...}
+                            if (matcher.matches()) {
+                                Block block = new Block();
+                                accumulatingBlock = block;
+                                For mFor = new For(scope, matcher.group(1), matcher.group(2), matcher.group(3) + ";", block);
+                                accumulatingExecutable = mFor;
+                                System.out.println(matcher.group(1));
+                                System.out.println(matcher.group(2));
+                                System.out.println(matcher.group(3) + ";");
+                                declarationMode = true;
                             }
+                            break;
                         }
-                        stripBrackets(falseString);
-                        Block trueBlock = new Block();
-                        Block falseBlock = new Block();
-                        for (String s: trueString.split(";")) {
-                            trueBlock.addStatement(s);
+                        case "if": {
+                            Pattern pattern = Pattern.compile("\\((.+)\\) \\{");
+                            Matcher matcher = pattern.matcher(nextLine);
+                            if (matcher.matches()) {
+                                System.out.println("matches!");
+                                Block block = new Block();
+                                accumulatingBlock = block;
+                                If mIf = new If(scope, matcher.group(1), block, null);
+                                accumulatingExecutable = mIf;
+                                declarationMode = true;
+                            }
+                            break;
                         }
-                        for (String s: falseString.split(";")) {
-                            trueBlock.addStatement(s);
-                        }
-                        If ifcontrol = new If(scope, condition, trueBlock, falseBlock);
-                        ifcontrol.execute();
-                        break;
-                    case "for":
-                    default:
-                        break;
-
+                        case "while":
+                            break;
+                        case "int":
+                            break;
+                        case "boolean":
+                            break;
+                        case "float":
+                            break;
+                        default:
+                            break;
+                    }
+                    declarationMode = true;
+                } else if (nextLine.endsWith("}")) {
+                    if (accumulatingExecutable != null)
+                        accumulatingExecutable.execute();
+                    declarationMode = false;
+                } else {
+                    System.out.println(nextLine);
                 }
+//                String instr = scanner.next();
+//                switch (instr) {
+//                    case "boolean":
+//                    case "int":
+//                    case "float":
+//                        String name = scanner.next();
+//                        String equals = scanner.next();
+//                        String value = scanner.next();
+//                        statementExecutor.execute(instr + name + value);
+//                        break;
+//                    case "if":
+//                        String condition = scanner.next();
+//                        String trueString = scanner.next();
+//                        while (!scanner.hasNext(".+}")) {
+//                            String toAdd = scanner.next();
+//                            System.out.println("trueString: " + trueString+ " toAdd: "+ toAdd);
+//                            trueString = trueString + " " +toAdd;
+//                        }
+//                        stripBrackets(trueString);
+//                        String falseString = null;
+//                        if (scanner.hasNext("else")) {
+//                            falseString = scanner.next();
+//                            while (!scanner.hasNext(".+}")) {
+//                                falseString = falseString + scanner.next();
+//                            }
+//                        }
+//                        stripBrackets(falseString);
+//                        Block trueBlock = new Block();
+//                        Block falseBlock = new Block();
+//                        for (String s: trueString.split(";")) {
+//                            trueBlock.addStatement(s);
+//                        }
+//                        for (String s: falseString.split(";")) {
+//                            trueBlock.addStatement(s);
+//                        }
+//                        If ifcontrol = new If(scope, condition, trueBlock, falseBlock);
+//                        ifcontrol.execute();
+//                        break;
+//                    case "for":
+//                    default:
+//                        break;
+//
+//                }
             } catch (StatementException e) {
                 e.printStackTrace();
             }

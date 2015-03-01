@@ -7,6 +7,7 @@ public class BoolVar extends Var<Boolean> {
 
   @Override
   public void setValue(String newValue) throws StatementException {
+      newValue = newValue.trim();
     if (newValue.equals("true")) {
       value = true;
       notifyValueSet();
@@ -14,6 +15,7 @@ public class BoolVar extends Var<Boolean> {
       value = false;
       notifyValueSet();
     } else {
+        System.out.println("invalid for bool:" + newValue);
       throw new VariableTypeMismatchException();
     }
   }

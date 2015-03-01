@@ -51,8 +51,10 @@ public class StatementExecutor {
                     ArithmeticEvaluator evaluator = new ArithmeticEvaluator(scope);
                     ((IntVar)var).setValue(evaluator.evaluate(scanner.nextLine()));
                 } else {
-                    var.setValue(scanner.next());
+                    String value = scanner.nextLine();
+                    var.setValue(value);
                 }
+                scope.addVariable(name, var);
             } catch (InstantiationException e) {
                 e.printStackTrace();
             } catch (IllegalAccessException e) {

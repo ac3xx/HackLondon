@@ -21,8 +21,10 @@ public class GameEngine implements TerminalListener, GamePanelListener {
     world = new GlobalObject();
     currentGameObject = world;
     LinkedList<String> part1Code = new LinkedList<String>();
-    part1Code.add("//Let there be light");
-    part1Code.add("boolean light = false;");
+      part1Code.add("");
+//    part1Code.add("for (int i = 0; i < 10; i++) {");
+//    part1Code.add("boolean light = false;");
+//      part1Code.add("}");
     world.setCodelines(part1Code);
   }
 

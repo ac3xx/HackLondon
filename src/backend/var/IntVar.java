@@ -9,6 +9,7 @@ import backend.exceptions.VariableTypeMismatchException;
 public class IntVar extends Var<Integer> {
   @Override
   public void setValue(String newValue) throws StatementException {
+      newValue = newValue.trim();
     try {
       value = Integer.parseInt(newValue);
       notifyValueSet();

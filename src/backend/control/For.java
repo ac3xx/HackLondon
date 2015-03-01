@@ -8,7 +8,7 @@ import backend.exceptions.StatementException;
 /**
  * @author Csongor Kiss
  */
-public class For extends Scope {
+public class For extends Executable {
     private final String condition;
     private final ConditionEvaluator evaluator;
     private final Block block;
@@ -26,6 +26,7 @@ public class For extends Scope {
         execute(initial);
     }
 
+    @Override
     public void execute() throws StatementException {
         System.out.println(this);
         for (String stmt : block.getStatements()) {
@@ -33,6 +34,7 @@ public class For extends Scope {
         }
         if(evaluator.evaluate(condition)) {
             execute(reassignment);
+            System.out.println(reassignment);
             execute();
         }
     }

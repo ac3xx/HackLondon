@@ -11,8 +11,15 @@ import java.util.Scanner;
  * @author Csongor Kiss
  */
 public class GlobalObject extends GameObject {
+    private static boolean firstPartCompleted = false;
+    private VarListener goodJobListener = variable -> {
+        if (!firstPartCompleted) {
+            GameWindow.getInstance().getTerminal().addCodeLine("Good job");
+        }
+        firstPartCompleted = true;
+    };
 
-  public GlobalObject() {
+    public GlobalObject() {
     super(null);
   }
 
@@ -27,18 +34,14 @@ public class GlobalObject extends GameObject {
     }
     variables.put(name, var);
     if (name.equals("light")) {
-        var.addListener(new VarListener() {
-          @Override
-          public void valueSet(Var variable) {
-            if (variable.getStringValue().equals("true")) {
-              GameWindow.getInstance().getGamePanel().turnOnTheLight();
-              //TODO: good job text should only show up the first time
-              GameWindow.getInstance().getTerminal().addCodeLine("Good job!");
-            } else {
-              GameWindow.getInstance().getGamePanel().turnOffTheLight();
-            }
+        var.addListener(variable -> {
+          if (variable.getStringValue().equals("true")) {
+            GameWindow.getInstance().getGamePanel().turnOnTheLight();
+          } else {
+            GameWindow.getInstance().getGamePanel().turnOffTheLight();
           }
         });
+        var.addListener(goodJobListener);
     }
   }
 

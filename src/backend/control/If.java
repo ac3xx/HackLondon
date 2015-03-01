@@ -10,7 +10,7 @@ import java.beans.Statement;
 /**
  * @author Csongor Kiss
  */
-public class If extends Scope {
+public class If extends Executable {
     private Block trueBlock, falseBlock;
     private String condition;
 
