@@ -43,7 +43,7 @@ public class Terminal extends JPanel {
   private void doDrawing(Graphics g) {
     Font gameFont = Font.getFont("Arial");
     try {
-        FileInputStream fontInput = new FileInputStream("src/LisaTerminalPaper2X3Y.ttf");
+        FileInputStream fontInput = new FileInputStream("src/LisaTerminalPaperRaw.ttf");
         gameFont = Font.createFont(Font.TRUETYPE_FONT, fontInput);
         gameFont = gameFont.deriveFont(17f);
     } catch (FileNotFoundException ex) {
