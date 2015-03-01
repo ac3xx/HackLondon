@@ -140,12 +140,13 @@ public class Terminal extends JPanel {
           }
         }
         break;
-      case KeyEvent.VK_UP:
+        case KeyEvent.VK_UP:
         currentLine = Math.max(currentLine - 1, 0);
         currentChar = Math.max(currentChar, codeLines.get(currentLine).length());
         break;
       case KeyEvent.VK_DOWN:
         currentLine = Math.min(currentLine + 1, codeLines.size() - 1);
+        currentChar = Math.min(codeLines.get(currentLine).length(), currentChar);
         endOfLine();
         break;
       case KeyEvent.VK_BACK_SPACE:
@@ -160,7 +161,7 @@ public class Terminal extends JPanel {
 //            currentLine = Math.max(currentLine-1, 0);
           }
         } else {
-          //System.out.println("currentChar = " + currentChar + " thisLine Max = " + Math.max(thisLine.length()-1, 0));
+          System.out.println("currentChar = " + currentChar + " thisLine Max = " + Math.max(thisLine.length()-1, 0));
           newLine = thisLine.substring(0, currentChar - 1) + thisLine.substring(currentChar, Math.max(thisLine.length(), 0));
           codeLines.set(currentLine, newLine);
           currentChar--;
