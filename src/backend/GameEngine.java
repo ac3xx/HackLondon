@@ -20,7 +20,7 @@ public class GameEngine implements TerminalListener, GamePanelListener {
     this.gamePanel = gamePanel;
     LinkedList<String> part1Code = new LinkedList<String>();
     part1Code.add("//Part1");
-    part1Code.add("boolean light = false");
+    part1Code.add("boolean light = false;");
     terminal.setCode(part1Code);
     terminal.setListener(this);
     gamePanel.setListener(this);
@@ -55,7 +55,6 @@ public class GameEngine implements TerminalListener, GamePanelListener {
     List<String> codeList = terminal.getCodeLines();
     String changedLine = codeList.get(lineNumber);
     try {
-      System.out.println(changedLine);
       world.execute(changedLine);
     } catch (StatementException e) {
 //      e.printStackTrace();

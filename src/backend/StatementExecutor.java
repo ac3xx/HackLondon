@@ -1,8 +1,7 @@
 package backend;
 
+import backend.exceptions.IllegalStatementException;
 import backend.exceptions.StatementException;
-import backend.exceptions.VariableAlreadyInScopeException;
-import backend.exceptions.VariableTypeMismatchException;
 import backend.var.BoolVar;
 import backend.var.FloatVar;
 import backend.var.IntVar;
@@ -27,6 +26,10 @@ public class StatementExecutor {
     }
 
     public void execute(String stmt) throws StatementException {
+      if (!stmt.contains(";")) throw new IllegalStatementException();
+
+      stmt = stmt.substring(0, stmt.indexOf(';'));
+
       Scanner scanner = new Scanner(stmt);
       String first = scanner.next();
       if (types.containsKey(first)) {
@@ -44,6 +47,8 @@ public class StatementExecutor {
           e.printStackTrace();
         } catch (IllegalAccessException e) {
           e.printStackTrace();
+        } catch (NoSuchElementException e) {
+          //TODO: maybe do something about this?
         }
       } else if (scope.containsVariable(first)) {
           Var var = scope.getVariableFromScope(first);

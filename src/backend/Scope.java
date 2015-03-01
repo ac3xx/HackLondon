@@ -35,8 +35,7 @@ public class Scope {
   public void reassignVariable(String name, String value) throws StatementException{
     if (variables.containsKey(name)) {
       variables.get(name).setValue(value);
-    }
-    if (parent != null) {
+    } else if (parent != null) {
       parent.reassignVariable(name, value);
     } else {
       throw new VariableNotInScopeException();

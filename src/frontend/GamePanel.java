@@ -36,18 +36,17 @@ public class GamePanel extends JPanel {
         String fileName = Tile.values()[0].getFileName();
         for (int i = 0; i < wTiles; i++) {
           for (int j = 0; j < hTiles; j++) {
-            setTile(new TileLocation(i, j), "grass");
+            setTile(new TileLocation(i, j), "rock");
           }
         }
         isInvalidated = true;
     }
 
     public void turnOnTheLight() {
-        System.out.println("Turn on the light!");
         String fileName = Tile.values()[1].getFileName();
         for (int i = 0; i < wTiles; i++) {
             for (int j = 0; j < hTiles; j++) {
-                setTile(new TileLocation(i, j), "rock");
+                setTile(new TileLocation(i, j), "grass");
             }
         }
         isInvalidated = true;
