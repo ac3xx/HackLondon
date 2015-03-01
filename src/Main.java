@@ -14,29 +14,29 @@ import javax.swing.SwingUtilities;
  */
 public class Main {
     public static void main(String[] args) {
-//        SwingUtilities.invokeLater(new Runnable() {
-//
-//            @Override
-//            public void run() {
-//
-//                GameWindow sk = GameWindow.init();
-//                sk.setVisible(true);
-//            }
-//        });
+        SwingUtilities.invokeLater(new Runnable() {
 
-        Scope scope = new Scope(null);
-        Block trueBlock = new Block();
-        trueBlock.addStatement("boolean asd = true;");
-        trueBlock.addStatement("int kasd = 5;");
-        Block falseBlock = new Block();
-        falseBlock.addStatement("boolean asd = false;");
-        If mIf = new If(scope, "false", trueBlock, falseBlock);
-        try {
-            mIf.execute();
-            System.out.println(mIf);
+            @Override
+            public void run() {
 
-        } catch (StatementException e) {
-            e.printStackTrace();
-        }
+                GameWindow sk = GameWindow.init();
+                sk.setVisible(true);
+            }
+        });
+
+//        Scope scope = new Scope(null);
+//        Block trueBlock = new Block();
+//        trueBlock.addStatement("boolean asd = true;");
+//        trueBlock.addStatement("int kasd = 5;");
+//        Block falseBlock = new Block();
+//        falseBlock.addStatement("boolean asd = false;");
+//        If mIf = new If(scope, "false", trueBlock, falseBlock);
+//        try {
+//            mIf.execute();
+//            System.out.println(mIf);
+//
+//        } catch (StatementException e) {
+//            e.printStackTrace();
+//        }
     }
 }

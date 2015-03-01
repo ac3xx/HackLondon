@@ -1,5 +1,6 @@
 package backend;
 
+import backend.control.If;
 import backend.exceptions.StatementException;
 
 import java.util.NoSuchElementException;
@@ -34,14 +35,27 @@ public class Parser {
                 switch (name) {
                     case "if":
                         String condition = stmtScan.next();
-                        condition = condition.substring(1, condition.length()); // strip the brackets
+                        stripBrackets(condition);; // strip the brackets
                         String statements = stmtScan.next();
-                        statements = statements.substring((1, statements.length()-1)); //strip curly braces
+                        stripBrackets(statements); //strip curly braces
                         Scanner blockScanner = new Scanner(statements).useDelimiter(";(?=\\\\p{Alpha})");
                         Block trueBlock = new Block();
                         while (blockScanner.hasNext()) {
                             trueBlock.addStatement(blockScanner.next());
                         }
+                        Block falseBlock = null;
+                        if (scanner.hasNext("else") || scanner.hasNext(" else")) {
+                            stmt = scanner.next(); //drop the else
+                            stmtScan = new Scanner(stmt); stmtScan.next(); //drop the else
+                            statements = stmtScan.next();
+                            stripBrackets(statements); //strip curly braces
+                            blockScanner = new Scanner(statements).useDelimiter(";(?=\\\\p{Alpha})");
+                            falseBlock = new Block();
+                            while (blockScanner.hasNext()) {
+                                falseBlock.addStatement(blockScanner.next());
+                            }
+                        }
+                        If ifcontrol = new If(scope, condition, trueBlock, falseBlock);
                         break;
                     case "for":
                         //TODO: Make for class
@@ -61,6 +75,10 @@ public class Parser {
         } catch (StatementException e) {
             e.printStackTrace();
         }
+    }
+
+    private void stripBrackets(String s) {
+        s = s.substring(1, s.length()-1);
     }
 
 
