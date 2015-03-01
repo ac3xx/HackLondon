@@ -174,7 +174,7 @@ public class Terminal extends JPanel {
         break; // TODO: make this better
       default:
         //TODO: Check if line should overflow
-        if (!e.isControlDown() || !e.isAltDown()) {
+        if (!e.isControlDown() && !e.isAltDown()) {
           newLine = thisLine.substring(0, currentChar) + c
                   + thisLine.substring(Math.min(currentChar, thisLine.length()), thisLine.length());
           codeLines.set(currentLine, newLine);

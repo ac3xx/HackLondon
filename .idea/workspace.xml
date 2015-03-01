@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1d2c28c7-75bb-4ee1-a862-abad9aebba86" name="Default" comment="Terminal does more shit">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="" />
+    <list default="true" id="1d2c28c7-75bb-4ee1-a862-abad9aebba86" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/frontend/Terminal.java" afterPath="$PROJECT_DIR$/src/frontend/Terminal.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="HackLondon.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -31,8 +31,8 @@
       <file leaf-file-name="Terminal.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/frontend/Terminal.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.73619634" vertical-offset="1365" max-vertical-offset="3930">
-              <caret line="67" column="29" selection-start-line="67" selection-start-column="29" selection-end-line="67" selection-end-column="29" />
+            <state vertical-scroll-proportion="0.5214724" vertical-offset="2355" max-vertical-offset="3930">
+              <caret line="176" column="33" selection-start-line="176" selection-start-column="33" selection-end-line="176" selection-end-column="33" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#6402#6403#0" expanded="true" />
@@ -454,7 +454,13 @@
       <option name="project" value="LOCAL" />
       <updated>1425165213819</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Blinking cursor">
+      <created>1425170568403</created>
+      <option name="number" value="00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1425170568403</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -505,7 +511,8 @@
     <MESSAGE value="Terminal cursor up and down and merged" />
     <MESSAGE value="Terminal does more shit" />
     <MESSAGE value="changed font" />
-    <option name="LAST_COMMIT_MESSAGE" value="changed font" />
+    <MESSAGE value="Blinking cursor" />
+    <option name="LAST_COMMIT_MESSAGE" value="Blinking cursor" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -960,8 +967,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/frontend/Terminal.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.73619634" vertical-offset="1365" max-vertical-offset="3930">
-          <caret line="67" column="29" selection-start-line="67" selection-start-column="29" selection-end-line="67" selection-end-column="29" />
+        <state vertical-scroll-proportion="0.5214724" vertical-offset="2355" max-vertical-offset="3930">
+          <caret line="176" column="33" selection-start-line="176" selection-start-column="33" selection-end-line="176" selection-end-column="33" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#6402#6403#0" expanded="true" />
