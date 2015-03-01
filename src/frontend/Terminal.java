@@ -91,7 +91,7 @@ public class Terminal extends JPanel {
 //      sb.append("  ");
 //    }
     for (int i = 0; i < currentLine; i++) {
-      sb.append(codeLines.get(i));
+      sb.append("\n");
     }
     String thisLine = codeLines.get(currentLine);
     sb.append(thisLine.substring(0, Math.min(currentChar, codeLines.get(currentLine).length())));
