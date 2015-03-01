@@ -6,17 +6,17 @@ import backend.exceptions.VariableNotInScopeException;
 import backend.var.Var;
 
 import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @author Csongor Kiss
  */
 public class Scope {
-    private Scope parent;
-    protected HashMap<String, Var> variables = new HashMap<String, Var>();
-    protected HashMap<String, Method> methods = new HashMap<String, Method>();
+    protected Scope parent;
+    protected HashMap<String, Var> variables = new HashMap<>();
+    protected HashMap<String, Method> methods = new HashMap<>();
 
     public Scope(Scope parent) {
-      //TODO: it can be null
       this.parent = parent;
     }
 
@@ -61,4 +61,13 @@ public class Scope {
       StatementExecutor executor = new StatementExecutor(this);
       executor.execute(changedLine);
   }
+
+    @Override
+    public String toString() {
+        String ret = "";
+        for (Map.Entry<String, Var> entry : variables.entrySet()) {
+            ret += entry.getKey() + " = " + entry.getValue().getStringValue() + "\n";
+        }
+        return ret;
+    }
 }
