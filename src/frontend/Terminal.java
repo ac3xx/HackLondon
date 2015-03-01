@@ -26,6 +26,8 @@ public class Terminal extends JPanel {
   private String code;
   private int blink;
   private int maxLineLength;
+  private Timer longTimer;
+  private Timer shortTimer; //TODO: implements hint timers
 
   public Terminal(GameEngine engine) {
     setOpaque(true);
@@ -68,7 +70,7 @@ public class Terminal extends JPanel {
     }
     drawString(g, sb.toString(), 25, 25);
     if (blink < 30) {
-      drawCursor(g);
+      drawCursor(g); //TODO: sort this fucker out
     }
     blink = (blink + 1) % 60;
     //g2d.draw(new Line2D.Double(25, 25, 25, 45));
@@ -89,7 +91,7 @@ public class Terminal extends JPanel {
 //      sb.append("  ");
 //    }
     for (int i = 0; i < currentLine; i++) {
-      sb.append("\n");
+      sb.append(codeLines.get(i));
     }
     String thisLine = codeLines.get(currentLine);
     sb.append(thisLine.substring(0, Math.min(currentChar, codeLines.get(currentLine).length())));

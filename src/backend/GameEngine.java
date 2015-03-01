@@ -1,6 +1,7 @@
 package backend;
 
 import backend.exceptions.StatementException;
+import com.sun.deploy.util.StringUtils;
 import frontend.*;
 
 import java.util.HashMap;
@@ -47,14 +48,19 @@ public class GameEngine implements TerminalListener, GamePanelListener {
 
   @Override
   public void updatedLine(int lineNumber) {
-    List<String> codeList = terminal.getCodeLines();
-    String changedLine = codeList.get(lineNumber);
-    try {
-      currentGameObject.execute(changedLine);
-    } catch (StatementException e) {
-//      e.printStackTrace();
-    }
-//    System.out.println("new line: " + changedLine);
+      List<String> codeList = terminal.getCodeLines();
+      String parseString = StringUtils.join(codeList, "");
+
+
+
+//    List<String> codeList = terminal.getCodeLines();
+//    String changedLine = codeList.get(lineNumber);
+//    try {
+//      currentGameObject.execute(changedLine);
+//    } catch (StatementException e) {
+////      e.printStackTrace();
+//    }
+////    System.out.println("new line: " + changedLine);
   }
 
   public void setTerminal(Terminal terminal) {
