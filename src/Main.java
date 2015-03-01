@@ -19,23 +19,23 @@ import java.util.Map;
  */
 public class Main {
     public static void main(String[] args) throws StatementException {
-//        SwingUtilities.invokeLater(new Runnable() {
-//
-//            @Override
-//            public void run() {
-//
-//                GameWindow sk = GameWindow.init();
-//                sk.setVisible(true);
-//            }
-//        });
+        SwingUtilities.invokeLater(new Runnable() {
 
-        Scope scope = new Scope(null);
-        Block block = new Block();
-        Map<Var.Type, String> arguments = new HashMap<>();
-        arguments.put(Var.Type.INTEGER, "i");
-        block.addStatement("i = i + 6;");
-        block.addStatement("return i;");
-        Method method = new Method(scope, arguments, block);
-        method.apply("9");
+            @Override
+            public void run() {
+
+                GameWindow sk = GameWindow.init();
+                sk.setVisible(true);
+            }
+        });
+
+//        Scope scope = new Scope(null);
+//        Block block = new Block();
+//        Map<Var.Type, String> arguments = new HashMap<>();
+//        arguments.put(Var.Type.INTEGER, "i");
+//        block.addStatement("i = i + 6;");
+//        block.addStatement("return i;");
+//        Method method = new Method(scope, arguments, block);
+//        method.apply("9");
     }
 }

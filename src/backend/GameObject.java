@@ -66,6 +66,7 @@ public class GameObject extends Scope {
     public void reload() {
         Parser parser = new Parser(this);
         String parseString = StringUtils.join(codeLines, "\n");
+        //System.out.println("parseString: " + parseString);
         parser.parse(parseString);
     }
 }
