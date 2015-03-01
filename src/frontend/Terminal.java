@@ -23,6 +23,7 @@ public class Terminal extends JPanel {
   private int currentLine;
   private int currentChar;
   private String code;
+  private int blink;
 
   public Terminal() {
     setOpaque(true);
@@ -35,6 +36,7 @@ public class Terminal extends JPanel {
     this.setFocusTraversalKeysEnabled(false);
     currentLine = 2;
     currentChar = 0;
+    blink = 0;
     }
 
   private void doDrawing(Graphics g) {
@@ -60,7 +62,10 @@ public class Terminal extends JPanel {
       sb.append(s).append("\n");
     }
     drawString(g, sb.toString(), 25, 25);
-    drawCursor(g);
+    if (blink < 30) {
+      drawCursor(g);
+    }
+    blink = (blink + 1) % 60;
     //g2d.draw(new Line2D.Double(25, 25, 25, 45));
   }
 
@@ -106,21 +111,30 @@ public class Terminal extends JPanel {
     char c = e.getKeyChar();
     switch (e.getKeyCode()) {
       case KeyEvent.VK_LEFT:
-        if (currentChar == 0) {
-          currentLine = Math.max(currentLine-1, 0);
-          currentChar = codeLines.get(currentLine).length();
+        if (e.isControlDown()) {
+          currentChar = 0;
         } else {
-          currentChar--;
+          if (currentChar == 0) {
+            currentLine = Math.max(currentLine-1, 0);
+            currentChar = codeLines.get(currentLine).length();
+          } else {
+            currentChar--;
+          }
         }
+
         break;
       case KeyEvent.VK_RIGHT:
-        if (currentChar == codeLines.get(currentLine).length()) {
-          if (currentLine < codeLines.size()-1) {
-            currentLine++;
-            currentChar = 0;
-          }
+        if (e.isControlDown()) {
+          currentChar = codeLines.get(currentLine).length();
         } else {
-          currentChar++;
+          if (currentChar == codeLines.get(currentLine).length()) {
+            if (currentLine < codeLines.size()-1) {
+              currentLine++;
+              currentChar = 0;
+            }
+          } else {
+            currentChar++;
+          }
         }
         break;
       case KeyEvent.VK_UP:
@@ -160,12 +174,13 @@ public class Terminal extends JPanel {
         break; // TODO: make this better
       default:
         //TODO: Check if line should overflow
-//        if (Character.isAlph())
-        newLine = thisLine.substring(0, currentChar) + c
-                + thisLine.substring(Math.min(currentChar, thisLine.length()), thisLine.length());
-        codeLines.set(currentLine, newLine);
-        currentChar++;
-        listener.updatedLine(currentLine);
+        if (!e.isControlDown() || !e.isAltDown()) {
+          newLine = thisLine.substring(0, currentChar) + c
+                  + thisLine.substring(Math.min(currentChar, thisLine.length()), thisLine.length());
+          codeLines.set(currentLine, newLine);
+          currentChar++;
+          listener.updatedLine(currentLine);
+        }
         break;
     }
 
