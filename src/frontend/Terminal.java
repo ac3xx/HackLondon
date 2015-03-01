@@ -142,7 +142,7 @@ public class Terminal extends JPanel {
         break;
         case KeyEvent.VK_UP:
         currentLine = Math.max(currentLine - 1, 0);
-        currentChar = Math.max(currentChar, codeLines.get(currentLine).length());
+        currentChar = Math.min(currentChar, codeLines.get(currentLine).length()-1);
         break;
       case KeyEvent.VK_DOWN:
         currentLine = Math.min(currentLine + 1, codeLines.size() - 1);
@@ -177,10 +177,14 @@ public class Terminal extends JPanel {
         currentChar = 0;
         break;
       case KeyEvent.VK_TAB:
-        newLine = thisLine.substring(0, currentChar) + "  " + thisLine.substring(currentChar, codeLines.get(currentLine).length()-1);
+        newLine = thisLine.substring(0, currentChar) + "  " + thisLine.substring(currentChar, thisLine.length());
         codeLines.set(currentLine, newLine);
           currentChar += 2;
         break;
+        case KeyEvent.VK_SHIFT:
+            break;
+        case KeyEvent.VK_META:
+            break;
       default:
         //TODO: Check if line should overflow
         if (!e.isControlDown() && !e.isAltDown()) {
