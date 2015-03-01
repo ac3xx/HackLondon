@@ -23,24 +23,34 @@ public class Method extends Scope {
       varMap = args;
   }
 
+public Method(Scope parent) {
+        super(parent);
+    }
+
     public String apply(String... args) throws StatementException {
         if (varMap.size() != args.length) throw new ArgumentNumberException();
         int i = 0;
-        for (Map.Entry<Var.Type, String> entry : varMap.entrySet()) {
-            Var var = Var.Type.varInstance(entry.getKey());
-            var.setName(entry.getValue());
+    for (Map.Entry<Var.Type, String> entry : varMap.entrySet()) {
+        Var var = Var.Type.varInstance(entry.getKey());
+        var.setName(entry.getValue());
             var.setValue(args[i]);
-            addVariable(var.getName(), var);
+            if (containsVariable(var.getName())) {
+                reassignVariable(var.getName(), var.getStringValue());
+            } else addVariable(var.getName(), var);
             i++;
         }
 
         for (String stmt : block.getStatements()) {
             execute(stmt);
         }
+        System.out.println("method's scope: " + this);
 
         if (containsVariable("$return")) {
             return getVariableFromScope("$return").getStringValue();
         } else return "";
     }
 
+    public void setBody(Block body) {
+        this.block = body;
+    }
 }

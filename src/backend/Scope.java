@@ -1,9 +1,7 @@
 package backend;
 
 import backend.control.Method;
-import backend.exceptions.StatementException;
-import backend.exceptions.VariableAlreadyInScopeException;
-import backend.exceptions.VariableNotInScopeException;
+import backend.exceptions.*;
 import backend.var.Var;
 
 import java.util.HashMap;
@@ -43,6 +41,26 @@ public class Scope {
     }
   }
 
+    public void addMethod(String name, Method method) throws MethodAlreadyInScopeException {
+        if (containsMethod(name)) {
+            throw new MethodAlreadyInScopeException();
+        }
+        methods.put(name, method);
+    }
+
+    public boolean containsMethod(String name) {
+        return methods.containsKey(name) || parent != null && parent.containsMethod(name);
+    }
+
+    public Method getMethod(String name) throws MethodNotInScopeException {
+        if (methods.containsKey(name)) return methods.get(name);
+        if ( parent != null) {
+            return parent.getMethod(name);
+        } else {
+            throw new MethodNotInScopeException();
+        }
+    }
+
   public Var getVariableFromScope(String name) throws VariableNotInScopeException {
       if (variables.containsKey(name)) return variables.get(name);
       if (parent != null) {
@@ -71,4 +89,7 @@ public class Scope {
         return ret;
     }
 
+    public void removeMethod(String methodName) {
+        methods.remove(methodName);
+    }
 }

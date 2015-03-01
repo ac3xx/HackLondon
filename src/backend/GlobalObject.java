@@ -12,11 +12,13 @@ import java.util.Scanner;
  */
 public class GlobalObject extends GameObject {
     private static boolean firstPartCompleted = false;
-    private VarListener goodJobListener = variable -> {
-        if (!firstPartCompleted) {
-            GameWindow.getInstance().getTerminal().addCodeLine("Good job");
+    private VarListener toggleLightListener = variable -> {
+        if (variable.getValue().equals(true)) {
+            if (!firstPartCompleted) {
+                GameWindow.getInstance().getTerminal().addCodeLine("Good job");
+            }
+            firstPartCompleted = true;
         }
-        firstPartCompleted = true;
     };
 
     public GlobalObject() {
@@ -35,13 +37,13 @@ public class GlobalObject extends GameObject {
     variables.put(name, var);
     if (name.equals("light")) {
         var.addListener(variable -> {
-          if (variable.getStringValue().equals("true")) {
+          if (variable.getValue().equals(true)) {
             GameWindow.getInstance().getGamePanel().turnOnTheLight();
           } else {
             GameWindow.getInstance().getGamePanel().turnOffTheLight();
           }
         });
-        var.addListener(goodJobListener);
+        var.addListener(toggleLightListener);
     }
   }
 

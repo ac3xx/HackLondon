@@ -1,6 +1,7 @@
 package backend;
 
 import backend.control.If;
+import backend.control.Method;
 import backend.exceptions.IllegalStatementException;
 import backend.exceptions.StatementException;
 import backend.var.BoolVar;
@@ -34,8 +35,8 @@ public class StatementExecutor {
 
     public void execute(String stmt) throws StatementException {
         if (!stmt.contains(";") && !stmt.contains("}")) throw new IllegalStatementException();
-
         stmt = stmt.substring(0, stmt.indexOf(';'));
+        System.out.println(stmt);
 
         Scanner scanner = new Scanner(stmt);
         String first = scanner.next();
@@ -54,7 +55,12 @@ public class StatementExecutor {
                     String value = scanner.nextLine();
                     var.setValue(value);
                 }
-                scope.addVariable(name, var);
+                if (scope.containsVariable(name)) {
+                    Var variable = scope.getVariableFromScope(name);
+                    variable.setValue(var.getStringValue());
+                } else {
+                    scope.addVariable(name, var);
+                }
             } catch (InstantiationException e) {
                 e.printStackTrace();
             } catch (IllegalAccessException e) {
@@ -101,7 +107,23 @@ public class StatementExecutor {
             if (scope.containsVariable(next)) {
                 Var returnVar = scope.getVariableFromScope(next);
                 System.out.println(returnVar.getStringValue());
-                scope.addVariable("$return", returnVar);
+                if (scope.containsVariable("$return")) {
+                    Var var = scope.getVariableFromScope("$return");
+                    var.setValue(returnVar.getStringValue());
+                } else {
+                    scope.addVariable("$return", returnVar);
+                }
+            }
+        } else if (first.contains("(") && first.contains(")")) {
+            //method
+            String methodName = first.substring(0, first.indexOf("("));
+            System.out.println(methodName + " called");
+            if (scope.containsMethod(methodName)) {
+                String signature = first.substring(first.indexOf("(") + 1, first.indexOf(")"));
+                String[] args = signature.split(", ");
+                Method method = scope.getMethod(methodName);
+                System.out.println("returns: " + method.apply(args));
+                System.out.println(methodName + " called with args: " + args.length);
             }
         }
     }
