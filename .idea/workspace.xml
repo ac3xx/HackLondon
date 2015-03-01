@@ -2,23 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1ead90c8-c64d-477e-96f6-8dc863e66355" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/backend/control/If.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/HackLondon/backend/GameEngine.class" afterPath="$PROJECT_DIR$/out/production/HackLondon/backend/GameEngine.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/HackLondon/backend/GameObject.class" afterPath="$PROJECT_DIR$/out/production/HackLondon/backend/GameObject.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/HackLondon/frontend/GamePanel$1.class" afterPath="$PROJECT_DIR$/out/production/HackLondon/frontend/GamePanel$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/HackLondon/frontend/GamePanel.class" afterPath="$PROJECT_DIR$/out/production/HackLondon/frontend/GamePanel.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/HackLondon/frontend/GamePanelListener.class" afterPath="$PROJECT_DIR$/out/production/HackLondon/frontend/GamePanelListener.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/HackLondon/frontend/GameWindow.class" afterPath="$PROJECT_DIR$/out/production/HackLondon/frontend/GameWindow.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/HackLondon/backend/GlobalObject$1.class" afterPath="$PROJECT_DIR$/out/production/HackLondon/backend/GlobalObject$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/HackLondon/backend/GlobalObject.class" afterPath="$PROJECT_DIR$/out/production/HackLondon/backend/GlobalObject.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/HackLondon/frontend/Terminal.class" afterPath="$PROJECT_DIR$/out/production/HackLondon/frontend/Terminal.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/backend/GameEngine.java" afterPath="$PROJECT_DIR$/src/backend/GameEngine.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/backend/Block.java" afterPath="$PROJECT_DIR$/src/backend/Block.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/backend/GameObject.java" afterPath="$PROJECT_DIR$/src/backend/GameObject.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/frontend/GamePanel.java" afterPath="$PROJECT_DIR$/src/frontend/GamePanel.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/frontend/GamePanelListener.java" afterPath="$PROJECT_DIR$/src/frontend/GamePanelListener.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/frontend/GameWindow.java" afterPath="$PROJECT_DIR$/src/frontend/GameWindow.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/backend/GlobalObject.java" afterPath="$PROJECT_DIR$/src/backend/GlobalObject.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/frontend/Terminal.java" afterPath="$PROJECT_DIR$/src/frontend/Terminal.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/backend/control/If.java" afterPath="$PROJECT_DIR$/src/backend/control/If.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="HackLondon.iws" />
@@ -103,10 +89,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GameEngine.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="GameEngine.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/backend/GameEngine.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="731" max-vertical-offset="1200">
+            <state vertical-scroll-proportion="-0.5671642" vertical-offset="731" max-vertical-offset="1200">
               <caret line="31" column="35" selection-start-line="31" selection-start-column="35" selection-end-line="31" selection-end-column="35" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -116,44 +102,6 @@
                 <element signature="e#2077#2078#0" expanded="true" />
                 <element signature="e#2134#2135#0" expanded="true" />
                 <element signature="e#2156#2157#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GameObject.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/backend/GameObject.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="491" max-vertical-offset="960">
-              <caret line="50" column="31" selection-start-line="50" selection-start-column="31" selection-end-line="50" selection-end-column="31" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#392#400#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="If.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/backend/control/If.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.35181236" vertical-offset="0" max-vertical-offset="469">
-              <caret line="11" column="16" selection-start-line="11" selection-start-column="16" selection-end-line="11" selection-end-column="16" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GlobalObject.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/backend/GlobalObject.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="105" max-vertical-offset="660">
-              <caret line="10" column="38" selection-start-line="10" selection-start-column="38" selection-end-line="10" selection-end-column="38" />
-              <folding>
-                <element signature="e#607#1105#0" expanded="true" />
-                <element signature="e#1104#1105#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -178,8 +126,9 @@
         <option value="$PROJECT_DIR$/src/backend/GlobalObject.java" />
         <option value="$PROJECT_DIR$/src/backend/GameEngine.java" />
         <option value="$PROJECT_DIR$/src/frontend/GamePanel.java" />
-        <option value="$PROJECT_DIR$/src/backend/GameObject.java" />
         <option value="$PROJECT_DIR$/src/backend/control/If.java" />
+        <option value="$PROJECT_DIR$/src/backend/Block.java" />
+        <option value="$PROJECT_DIR$/src/backend/GameObject.java" />
       </list>
     </option>
   </component>
@@ -344,6 +293,9 @@
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="dynamic.classpath" value="false" />
+    <property name="options.lastSelected" value="preferences.sourceCode.Java" />
+    <property name="options.splitter.main.proportions" value="0.3" />
+    <property name="options.splitter.details.proportions" value="0.2" />
   </component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
@@ -612,7 +564,7 @@
       <updated>1425170360474</updated>
       <workItem from="1425170362689" duration="765000" />
       <workItem from="1425171154021" duration="3339000" />
-      <workItem from="1425174861959" duration="3593000" />
+      <workItem from="1425174861959" duration="3767000" />
     </task>
     <task id="LOCAL-00001" summary="semicolon now needed">
       <created>1425171174727</created>
@@ -632,11 +584,17 @@
       <option name="project" value="LOCAL" />
       <updated>1425175841529</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="fuck all">
+      <created>1425181008302</created>
+      <option name="number" value="00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1425181008302</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="7697000" />
+    <option name="totallyTimeSpent" value="7871000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="810" extended-state="0" />
@@ -646,6 +604,7 @@
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.7408907" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -662,7 +621,6 @@
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
@@ -710,7 +668,8 @@
     <MESSAGE value="semicolon now needed" />
     <MESSAGE value="can't remember that word, but I've fixed that" />
     <MESSAGE value="click events" />
-    <option name="LAST_COMMIT_MESSAGE" value="click events" />
+    <MESSAGE value="fuck all" />
+    <option name="LAST_COMMIT_MESSAGE" value="fuck all" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -823,13 +782,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/backend/exceptions/IllegalStatementException.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.10518934" vertical-offset="0" max-vertical-offset="713">
-          <caret line="5" column="64" selection-start-line="5" selection-start-column="64" selection-end-line="5" selection-end-column="64" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_20.jdk/Contents/Home/src.zip!/java/awt/Component.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.3326226" vertical-offset="46434" max-vertical-offset="147360">
@@ -892,33 +844,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/backend/GlobalObject.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="105" max-vertical-offset="660">
-          <caret line="10" column="38" selection-start-line="10" selection-start-column="38" selection-end-line="10" selection-end-column="38" />
-          <folding>
-            <element signature="e#607#1105#0" expanded="true" />
-            <element signature="e#1104#1105#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/backend/GameEngine.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="240" max-vertical-offset="1200">
-          <caret line="31" column="35" selection-start-line="31" selection-start-column="35" selection-end-line="31" selection-end-column="35" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#321#347#0" expanded="true" />
-            <element signature="e#1855#1863#0" expanded="true" />
-            <element signature="e#2041#2042#0" expanded="true" />
-            <element signature="e#2077#2078#0" expanded="true" />
-            <element signature="e#2134#2135#0" expanded="true" />
-            <element signature="e#2156#2157#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/frontend/Terminal.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1059" max-vertical-offset="3705">
@@ -948,23 +873,66 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/backend/GameObject.java">
+    <entry file="file://$PROJECT_DIR$/src/backend/exceptions/IllegalStatementException.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="491" max-vertical-offset="960">
-          <caret line="50" column="31" selection-start-line="50" selection-start-column="31" selection-end-line="50" selection-end-column="31" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#392#400#0" expanded="true" />
-          </folding>
+        <state vertical-scroll-proportion="0.15991472" vertical-offset="0" max-vertical-offset="469">
+          <caret line="5" column="64" selection-start-line="5" selection-start-column="64" selection-end-line="5" selection-end-column="64" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/backend/Block.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5117271" vertical-offset="0" max-vertical-offset="469">
+          <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/backend/control/If.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.35181236" vertical-offset="0" max-vertical-offset="469">
-          <caret line="11" column="16" selection-start-line="11" selection-start-column="16" selection-end-line="11" selection-end-column="16" />
+        <state vertical-scroll-proportion="0.54371" vertical-offset="0" max-vertical-offset="469">
+          <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/backend/GameObject.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.4392325" vertical-offset="0" max-vertical-offset="960">
+          <caret line="49" column="13" selection-start-line="49" selection-start-column="13" selection-end-line="49" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#396#404#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/backend/GlobalObject.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="105" max-vertical-offset="660">
+          <caret line="10" column="38" selection-start-line="10" selection-start-column="38" selection-end-line="10" selection-end-column="38" />
+          <folding>
+            <element signature="e#607#1105#0" expanded="true" />
+            <element signature="e#1104#1105#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/backend/GameEngine.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.5671642" vertical-offset="731" max-vertical-offset="1200">
+          <caret line="31" column="35" selection-start-line="31" selection-start-column="35" selection-end-line="31" selection-end-column="35" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#321#347#0" expanded="true" />
+            <element signature="e#1855#1863#0" expanded="true" />
+            <element signature="e#2041#2042#0" expanded="true" />
+            <element signature="e#2077#2078#0" expanded="true" />
+            <element signature="e#2134#2135#0" expanded="true" />
+            <element signature="e#2156#2157#0" expanded="true" />
           </folding>
         </state>
       </provider>
