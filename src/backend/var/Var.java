@@ -10,6 +10,23 @@ public abstract class Var<T> {
     private Set<VarListener> listeners = new HashSet<VarListener>();
     protected String name;
 
+    public static enum Type {
+        INTEGER, FLOAT, BOOL;
+
+        public static Var varInstance(Type t) {
+            switch (t) {
+                case INTEGER:
+                    return new IntVar();
+                case FLOAT:
+                    return new FloatVar();
+                case BOOL:
+                    return new BoolVar();
+                default:
+                    return null;
+            }
+        }
+    }
+
   /**
    *
    * @param newValue

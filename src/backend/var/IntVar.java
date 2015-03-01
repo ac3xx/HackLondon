@@ -16,4 +16,9 @@ public class IntVar extends Var<Integer> {
       throw new VariableTypeMismatchException();
     }
   }
+
+    public void setValue(int i) {
+        this.value = i;
+        notifyValueSet();
+    }
 }

@@ -1,5 +1,7 @@
 package backend;
 
+import backend.exceptions.StatementException;
+import backend.exceptions.VariableNotInScopeException;
 import backend.var.BoolVar;
 import backend.var.Var;
 
@@ -17,7 +19,7 @@ public class ConditionEvaluator {
         this.scope = scope;
     }
 
-    public boolean evaluate(String condition) {
+    public boolean evaluate(String condition) throws StatementException {
         if (scope.containsVariable(condition)) {
             return ((BoolVar) scope.getVariableFromScope(condition)).getValue();
         }

@@ -1,5 +1,6 @@
 package backend;
 
+import backend.exceptions.VariableNotInScopeException;
 import backend.var.IntVar;
 
 import java.util.regex.Matcher;
@@ -15,7 +16,7 @@ public class ArithmeticEvaluator {
         this.scope = scope;
     }
 
-    public int evaluate(String expression) {
+    public int evaluate(String expression) throws VariableNotInScopeException {
         try {
            return Integer.parseInt(expression);
         } catch (NumberFormatException e) {
@@ -24,21 +25,21 @@ public class ArithmeticEvaluator {
             }
             Pattern arithmethicPattern;
             Matcher matcher;
-            arithmethicPattern = Pattern.compile("(.+) \\* (.+)");
+            arithmethicPattern = Pattern.compile("\\s*(.+) \\* (.+)");
             matcher = arithmethicPattern.matcher(expression);
 
             if (matcher.find()) {
                 return evaluate(matcher.group(1)) * evaluate(matcher.group(2));
             }
 
-            arithmethicPattern = Pattern.compile("(.+) \\+ (.+)");
+            arithmethicPattern = Pattern.compile("\\s*(.+) \\+ (.+)");
             matcher = arithmethicPattern.matcher(expression);
 
             if (matcher.find()) {
                 return evaluate(matcher.group(1)) + evaluate(matcher.group(2));
             }
 
-            arithmethicPattern = Pattern.compile("(.+) \\- (.+)");
+            arithmethicPattern = Pattern.compile("\\s*(.+) \\- (.+)");
             matcher = arithmethicPattern.matcher(expression);
 
             if (matcher.find()) {

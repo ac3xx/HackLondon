@@ -1,5 +1,6 @@
 package backend;
 
+import backend.control.Method;
 import backend.exceptions.StatementException;
 import backend.exceptions.VariableAlreadyInScopeException;
 import backend.exceptions.VariableNotInScopeException;
@@ -42,13 +43,12 @@ public class Scope {
     }
   }
 
-  public Var getVariableFromScope(String name) {
+  public Var getVariableFromScope(String name) throws VariableNotInScopeException {
       if (variables.containsKey(name)) return variables.get(name);
       if (parent != null) {
         return parent.getVariableFromScope(name);
       } else {
-          //TODO: throw exception
-          return null;
+          throw new VariableNotInScopeException();
       }
   }
 
