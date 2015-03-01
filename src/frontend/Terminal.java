@@ -18,12 +18,14 @@ import java.util.LinkedList;
  * Created by James on 28/02/15.
  */
 public class Terminal extends JPanel {
-  private GameEngine engine;
+  private TerminalListener listener;
   private LinkedList<String> codeLines;
+  private GameEngine engine;
   private int currentLine;
   private int currentChar;
   private String code;
   private int blink;
+  private int maxLineLength;
 
   public Terminal(GameEngine engine) {
     setOpaque(true);
@@ -41,7 +43,7 @@ public class Terminal extends JPanel {
     try {
         FileInputStream fontInput = new FileInputStream("src/Nintendo.ttf");
         gameFont = Font.createFont(Font.TRUETYPE_FONT, fontInput);
-        gameFont = gameFont.deriveFont(20f);
+        gameFont = gameFont.deriveFont(15f);
     } catch (FileNotFoundException ex) {
         ex.printStackTrace();
     } catch (FontFormatException e) {
@@ -54,9 +56,15 @@ public class Terminal extends JPanel {
     Graphics2D g2d = (Graphics2D) g;
     g2d.setColor(Color.WHITE);
     g2d.setFont(gameFont);
+    maxLineLength = (int) (g2d.getClipBounds().getWidth() / g.getFontMetrics().charWidth(' '));
+    //System.out.println("maxlinelength = " + maxLineLength);
     StringBuilder sb = new StringBuilder();
     for (String s: codeLines) {
-      sb.append(s).append("\n");
+      for (int i = 0; i <= (int) s.length()/maxLineLength; i++) {
+        //System.out.println("Append, s.length/maxll = " + s.length()/maxLineLength+ " i = " + i);
+        sb.append(s.substring(i*maxLineLength, Math.min(s.length(), ((i+1)*maxLineLength))));
+        sb.append("\n");
+      }
     }
     drawString(g, sb.toString(), 25, 25);
     if (blink < 30) {
@@ -95,6 +103,7 @@ public class Terminal extends JPanel {
       super.paintComponent(g);
       doDrawing(g);
   }
+  
 
   public void keyPressed(KeyEvent e) {
 //    System.out.println("currentLine = " + currentLine + " currentChar = " + currentChar);
@@ -108,22 +117,21 @@ public class Terminal extends JPanel {
           currentChar = 0;
         } else {
           if (currentChar == 0) {
-            currentLine = Math.max(currentLine-1, 0);
+            currentLine = Math.max(currentLine - 1, 0);
             currentChar = codeLines.get(currentLine).length();
           } else {
             currentChar--;
           }
         }
-
         break;
       case KeyEvent.VK_RIGHT:
         if (e.isControlDown()) {
           currentChar = codeLines.get(currentLine).length();
         } else {
           if (currentChar == codeLines.get(currentLine).length()) {
-            if (currentLine < codeLines.size()-1) {
+            if (currentLine < codeLines.size() - 1) {
               currentLine++;
-              currentChar = 0;
+              startOfLine();
             }
           } else {
             currentChar++;
@@ -131,25 +139,27 @@ public class Terminal extends JPanel {
         }
         break;
       case KeyEvent.VK_UP:
-        currentLine = Math.max(currentLine-1, 0); currentChar = Math.max(currentChar, codeLines.get(currentLine).length());
+        currentLine = Math.max(currentLine - 1, 0);
+        currentChar = Math.max(currentChar, codeLines.get(currentLine).length());
         break;
       case KeyEvent.VK_DOWN:
-        currentLine = Math.min(currentLine+1, codeLines.size()-1); currentChar = Math.min(codeLines.get(currentLine).length(), currentChar);
+        currentLine = Math.min(currentLine + 1, codeLines.size() - 1);
+        endOfLine();
         break;
       case KeyEvent.VK_BACK_SPACE:
         if (currentChar == 0) {
           if (currentLine != 0) {
-            String previousLine = codeLines.get(currentLine-1);
+            String previousLine = codeLines.get(currentLine - 1);
             currentLine--;
             newLine = previousLine + thisLine;
             currentChar = codeLines.get(currentLine).length();
             codeLines.set(currentLine, newLine);
-            codeLines.remove(currentLine+1);
+            codeLines.remove(currentLine + 1);
 //            currentLine = Math.max(currentLine-1, 0);
           }
         } else {
           //System.out.println("currentChar = " + currentChar + " thisLine Max = " + Math.max(thisLine.length()-1, 0));
-          newLine = thisLine.substring(0, currentChar-1) + thisLine.substring(currentChar, Math.max(thisLine.length(), 0));
+          newLine = thisLine.substring(0, currentChar - 1) + thisLine.substring(currentChar, Math.max(thisLine.length(), 0));
           codeLines.set(currentLine, newLine);
           currentChar--;
         }
@@ -176,24 +186,16 @@ public class Terminal extends JPanel {
         }
         break;
     }
+  }
 
 
-//    String curLine = codeLines.get(currentLine);
-//    if (e.getKeyCode() == KeyEvent.VK_ENTER) {
-//      currentLine++;
-//      currentChar = 0;
-//    } else if (e.getKeyCode() == KeyEvent.VK_BACK_SPACE) {
-//
-//      if (currentChar == 0) {
-//        currentLine--;
-//        currentChar = codeLines.get(currentLine).length();
-//      }
-//
-//    }else if (e.getKeyCode() == KeyEvent.VK_LEFT) else {
+  private void endOfLine() {
+    currentChar = Math.max(codeLines.get(currentLine).length(), currentChar);
+  }
 
-
-
-    }
+  private void startOfLine() {
+    currentChar = 0;
+  }
 
   public LinkedList<String> getCodeLines() {
     return codeLines;
