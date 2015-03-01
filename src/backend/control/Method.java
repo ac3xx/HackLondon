@@ -15,9 +15,9 @@ import java.util.Map;
  */
 public class Method extends Scope {
   private Block block;
-    private Map<Var.Type, String> varMap;
+    private Map<String, Var.Type> varMap;
 
-  public Method(Scope parent, Map<Var.Type, String> args, Block body) {
+  public Method(Scope parent, Map<String, Var.Type> args, Block body) {
     super(parent);
       this.block = body;
       varMap = args;
@@ -30,9 +30,9 @@ public Method(Scope parent) {
     public String apply(String... args) throws StatementException {
         if (varMap.size() != args.length) throw new ArgumentNumberException();
         int i = 0;
-    for (Map.Entry<Var.Type, String> entry : varMap.entrySet()) {
-        Var var = Var.Type.varInstance(entry.getKey());
-        var.setName(entry.getValue());
+    for (Map.Entry<String, Var.Type> entry : varMap.entrySet()) {
+        Var var = Var.Type.varInstance(entry.getValue());
+        var.setName(entry.getKey());
             var.setValue(args[i]);
             if (containsVariable(var.getName())) {
                 reassignVariable(var.getName(), var.getStringValue());

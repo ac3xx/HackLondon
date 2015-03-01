@@ -86,7 +86,7 @@ public class Parser {
                             String signature = nextLine.substring(nextLine.indexOf("(") + 1, nextLine.indexOf(")"));
                             if (signature.length() > 0) {
                                 Scanner signatureScanner = new Scanner(signature);
-                                HashMap<Var.Type, String> args = new HashMap<>();
+                                HashMap<String, Var.Type> args = new HashMap<>();
                                 while(signatureScanner.hasNext()) {
                                     String typeName = signatureScanner.next();
                                     Var.Type type;
@@ -107,8 +107,8 @@ public class Parser {
                                     if (varName.contains(",")) {
                                         varName = varName.substring(0, varName.indexOf(","));
                                     }
-                                    args.put(type, varName);
-                            }
+                                    args.put(varName, type);
+                                }
                                 Block body = new Block();
                                 accumulatingBlock = body;
                                 Method method = new Method(scope, args, body);

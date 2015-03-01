@@ -115,10 +115,11 @@ public class StatementExecutor {
                 }
             }
         } else if (first.contains("(") && first.contains(")")) {
+            System.out.println("found");
             //method
             String methodName = first.substring(0, first.indexOf("("));
-            System.out.println(methodName + " called");
             if (scope.containsMethod(methodName)) {
+                System.out.println(methodName + "found");
                 String signature = first.substring(first.indexOf("(") + 1, first.indexOf(")"));
                 String[] args = signature.split(", ");
                 Method method = scope.getMethod(methodName);
